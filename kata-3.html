@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kata</title>
+</head>
+
+<body>
+<script>
+
+
+    function rot13(vizit) {
+
+        const newVizit = vizit.split('').map(el => {
+            let letter
+            if (/[A-Z]/.test(el)) {
+                letter = comparison(el.codePointAt(0), 65, 90)
+            } else if (/[a-z]/.test(el)) {
+                letter = comparison(el.codePointAt(0), 97, 122)
+            } else letter = el
+            return letter
+        })
+
+        function comparison(num, min, max) {
+            return (num + 13 > max)
+                ? String.fromCodePoint(12 - (max - num) + min)
+                : String.fromCodePoint(num + 13)
+        }
+
+        return newVizit.join('')
+    }
+
+
+    console.log(rot13("test")) // => "grfg"
+    console.log(rot13("Test")) // => "Grfg"
+</script>
+</body>
+
+</html>

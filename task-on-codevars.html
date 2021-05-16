@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+<div class="block">
+    <div class="spacer"></div>
+</div>
+
+<script>
+    function vinner(nameStr, weightsArr, n){
+        if (!nameStr) return 'no peaple'
+
+        let nameArr = nameStr.split(',')
+        let numbArr = nameArr.map(function(name) {
+            let length = name.length
+            return name.split('').reduce(function(prev, letter) {
+                return (letter.toUpperCase().codePointAt(0) - 64) + prev
+            },0) + length
+        })
+
+
+        let nameArrSort = []
+        let mapVinn = new Map()
+        for (let i = 0; i < nameArr.length; i++){
+            let val = numbArr[i] * weights[i]
+            mapVinn.set(nameArr[i], val)
+        }
+        let varif = 0
+        let numbSort = Array.from(mapVinn.values()).sort(function(a,b){return b-a})
+        for(let numb of numbSort){
+            for( [k, v] of mapVinn){
+                if(v===numb && varif!==numb){
+                    nameArrSort.push(k)
+                    varif = numb
+                    break
+                }else if(v===numb && varif===numb && !nameArrSort.includes(k)){
+                    let array = [nameArrSort.pop(), k].sort()
+                    nameArrSort.push(array[0])
+                    nameArrSort.push(array[1])
+                    break
+                }
+            }
+        }
+        if(n > nameArrSort.length) return 'not have count peaple'
+        return nameArrSort[n-1]
+
+    }
+
+    let st = 'COLIN,AMANDBA,AMANDAB,CAROL,PauL,JOSEPH'
+    let weights= [1, 4, 4, 5, 2, 1]
+    console.log(vinner(st, weights, 3))
+</script>
+</body>
+
+</html>

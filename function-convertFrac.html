@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+<div class="block">
+    <div class="spacer"></div>
+</div>
+
+<script>
+    function convertFrac(lst){
+
+        let secondNums = []
+
+        for(let item of lst){
+            secondNums.push(item[1])
+        }
+        let generalNum = 0
+
+        let maxSecondNum = Math.max(...secondNums)
+        let ofMaxSecondNum = secondNums.map(i => i !== maxSecondNum)
+        let minSecondNum = Math.max(...ofMaxSecondNum)
+
+
+        let t = true
+        while(t){
+            if (maxSecondNum === 1) {
+                t = false
+                generalNum = 1
+                continue}
+            generalNum = maxSecondNum * minSecondNum++
+            let newArr = secondNums.filter(item => (generalNum % item) === 0)
+            newArr.length === secondNums.length ? t = false : t = true
+        }
+        let result = ''
+        lst.map(arr => result += `(${arr[0]*(generalNum/arr[1])},${generalNum})`)
+
+
+
+        return result
+    }
+
+    let lst = [ [1, 2], [1, 3], [1, 4] ]
+    let lst1 = [ [1,1],[3,1],[4,1],[5,1] ]
+    // console.log(convertFrac(lst)) // "(6,12)(4,12)(3,12)")
+    console.log(convertFrac(lst1)) // '(1,1)(3,1)(4,1)(5,1)'
+</script>
+</body>
+
+</html>

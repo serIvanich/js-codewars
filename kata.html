@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kata</title>
+</head>
+
+<body>
+  <script>
+
+
+    function tickets(vizit) {
+      let successStr = 'YES'
+      let reject1 = `NO.Vasya will not have enough money to give change to ${this} dollars`
+      let reject2 = ` Vasya will not have the right bills to give 75 dollars of change (you can't make two bills of 25 from one of 50)`
+      let bank = []
+      let responce = 0
+      vizit.forEach((item, index, arr) => {
+
+        if (item === 25) {
+          bank.push(item)
+        } else if (item === 50) {
+          if (index === 0) {
+            responce = 50
+
+          } else {
+            for (let i = 0; i < bank.length; i++) {
+              if (bank[i] === 25) {
+                bank[i] = 50
+                responce = 25
+                break
+              } else {
+                responce = 50
+              }
+
+            }
+          }
+        } else if (item === 100) {
+          if (index < 3) {
+            responce = 100
+          } else {
+            let x
+            let y
+            let count = 0
+            for (let i = 0; i < bank.length; i++) {
+              if (bank[i] === 25) {
+                x = i
+                count++
+              } else if (bank[i] === 50) {
+                y = i
+              }
+            }
+            if ((x >= 0 & y >= 0) || count > 2){
+              responce = 25
+              bank[x] = 100
+              bank[y] = 0
+
+            } else {
+              responce = 100
+
+            }
+          }
+        }
+      })
+      switch (responce) {
+        case (25):
+          return 'YES'
+        case (50):
+          return `NO.Vasya will not have enough money to give change to ${responce} dollars`
+        case (100):
+          return `NO.Vasya will not have enough money to give change to ${responce} dollars`
+      }
+
+    }
+
+
+    console.log(tickets([25, 25, 50])) // => YES
+    console.log(tickets([25, 25, 25, 25, 100])) // => NO. Vasya will not have enough money to give change to 100 dollars
+    console.log(tickets([25, 25, 50, 50, 100])) // => NO. Vasya will not have the right bills to give 75 dollars of change (you can't make two bills of 25 from one of 50)
+  </script>
+</body>
+
+</html>
