@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kata</title>
+</head>
+
+<body>
+<script>
+
+
+    function number2words(number) {
+        const arrNum = number.toString().split('')
+        const lengthNum = arrNum.length
+
+        for (let i = 1; i <= lengthNum; i++) {
+            const pastNum = arrNum[lengthNum - i]
+            console.log(pastNum)
+            const res = singleNum(pastNum, i)
+            console.log(res)
+        }
+
+        const singleNum = (num, i) => {
+            switch (num) {
+                case '0':
+                    if (lengthNum === 1 && i === 1) {
+                        return 'zero'
+                    } else return ''
+                case '1':
+                    if ((i === 1 && arrNum[lengthNum - i-1] === '1')
+                        || (lengthNum > 4 && i === 4 && arrNum[lengthNum - i-1] === '1')){
+                        return 'eleven'
+                    } else if (i === 1) {
+                        return 'one'
+                    } else if (i === 3 || (lengthNum === 6 && i === 5)){
+                        return 'one hundred'
+                    }
+
+            }
+        }
+    }
+
+    number2words(2451)
+</script>
+</body>
+
+</html>
