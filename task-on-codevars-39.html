@@ -15,10 +15,28 @@
 </div>
 
 <script>
-    function nico(secWord, info){
-        let secArr = secWord.split().sort()
+    function nico(secretKey, text) {
+        let secArr = secretKey.split('').map((item, index, arr) => (arr.slice().sort().findIndex(i => i === item) + 1))
 
+        let secretText = text.split('')
+        let res = []
+        while (secretText.length) {
+            const fistRes = []
+            let textLength = secretText.length
+            let piece = textLength >= secArr.length
+                ? secretText.splice(0, secArr.length)
+                : [...secretText.splice(0), ...' '.repeat(secArr.length - textLength).split('')]
+            piece.forEach((item, index) => {
+                const ind = (+secArr[index] - 1)
+                fistRes[ind] = item
+
+            })
+            res = [...res, ...fistRes]
+
+        }
+        return res.join('')
     }
+
 
     console.log(nico("crazy", "secretinformation"))
     console.log(nico("abc", "abcd"))
