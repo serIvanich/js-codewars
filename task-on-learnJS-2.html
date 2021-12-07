@@ -16,34 +16,69 @@
 
 <script>
 
-    function filterRange(arr, a, b) {
-        return arr.filter(i => (a <= i && i <= b))
-    }
-
-
-    let arr = [5, 3, 8, 1];
-
-    let filtered = filterRange(arr, 1, 4);
-
-    // alert( filtered ); // 3,1 (совпадающие значения)
+    // function filterRange(arr, a, b) {
+    //     return arr.filter(i => (a <= i && i <= b))
+    // }
     //
-    // alert( arr ); // 5,3,8,1 (без изменений)
-    console.log(filtered)
-    console.log(arr)
+    //
+    // let arr = [5, 3, 8, 1];
+    //
+    // let filtered = filterRange(arr, 1, 4);
+    //
+    // // alert( filtered ); // 3,1 (совпадающие значения)
+    // //
+    // // alert( arr ); // 5,3,8,1 (без изменений)
+    // console.log(filtered)
+    // console.log(arr)
+    //
+    // // next task
+    //
+    // function filterRangeInPlace(arr, a, b) {
+    //    arr.forEach((i, ind) => (a > i || i > b)? arr.splice(ind, 1): null)
+    //
+    // }
+    //
+    // let arr2 = [5, 3, 8, 1];
+    //
+    // filterRangeInPlace(arr2, 1, 4); // удалены числа вне диапазона 1..4
+    //
+    // console.log(arr2); // [3, 1]
 
-    // next task
+    function Calculator(str) {
 
-    function filterRangeInPlace(arr, a, b) {
-       arr.forEach((i, ind) => (a > i || i > b)? arr.splice(ind, 1): null)
+        this.methods = {
+            '+': (a, b) => a + b,
+            '-': (a, b) => a - b,
+        }
 
+        this.calculate = function (str) {
+
+            let strArr = str.split(' ')
+            a = +strArr[0]
+            operand = strArr[1]
+            b = +strArr[2]
+
+
+            return this.methods[operand](a, b)
+        }
+        this.addMethod = function (name, func) {
+            this.methods[name] = func
+        }
     }
 
-    let arr2 = [5, 3, 8, 1];
+    let calc = new Calculator;
 
-    filterRangeInPlace(arr2, 1, 4); // удалены числа вне диапазона 1..4
+    let powerCalc = new Calculator;
+    powerCalc.addMethod("*", (a, b) => a * b);
+    powerCalc.addMethod("/", (a, b) => a / b);
+    powerCalc.addMethod("**", (a, b) => a ** b);
 
-    console.log(arr2); // [3, 1]
+    let result = powerCalc.calculate("2 ** 3");
+    console.log( `result: ${result}` ); // 8
 
+    console.log(calc); // 10
+    console.log(calc.calculate("3 + 7")); // 10
+    console.log(calc.calculate("3 - 7")); // 10
 
 </script>
 </body>
