@@ -67,13 +67,14 @@
         function toCompare(arr, t) {
             let optimal = arr.reduce((acc, num) => {
                 return (acc < num && num <= t) ? num : acc
-            })
+            },0)
             return optimal ? optimal : null
         }
         return result;
     }
-    chooseOptimalDistance(174, 3, [51, 56, 58, 59, 61]); //173
-    chooseOptimalDistance(163, 3, [50]); // null
+    //console.log( chooseOptimalDistance(174, 3, [51, 56, 58, 59, 61])); //173
+    console.log(chooseOptimalDistance(331, 4, [ 91, 74, 73, 85, 73, 81, 87 ])); //173
+    //console.log(chooseOptimalDistance(163, 3, [50])); // null
 
 
 </script>
