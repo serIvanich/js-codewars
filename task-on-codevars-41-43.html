@@ -33,15 +33,27 @@
         }
 
         function paperwork(n, m) {
-          //   if (n <= 0 || m <= 0) {
-          //     return 0;
-          //   } else {
-          //     return n * m;
-          //   }
-
           return n <= 0 || m <= 0 ? 0 : n * m;
         }
 
+        function basicOp(operation, value1, value2) {
+          // Code
+          switch (operation) {
+            case "+":
+              return value1 + value2;
+            case "-":
+              return value1 - value2;
+            case "*":
+              return value1 * value2;
+            case "/":
+              return value1 / value2;
+
+            default:
+              return "wrong operation";
+          }
+          // a shotter decision
+          //return eval(value1 + operation + value2);
+        }
         console.log(XO("xo"), "true");
         console.log(XO("xxOo"), "true");
         console.log(XO("xxxm"), "false");
@@ -53,6 +65,11 @@
         console.log(paperwork(-5, -5), "0"); //'Failed at paperwork(-5, -5)');
         console.log(paperwork(-5, 5), "0"); //'Failed at paperwork(-5, 5)');
         console.log(paperwork(5, 0), "0"); //'Failed at paperwork(5, 0)');
+
+        console.log(basicOp("+", 4, 7), "11");
+        console.log(basicOp("-", 15, 18), "-3");
+        console.log(basicOp("*", 5, 5), "25");
+        console.log(basicOp("/", 49, 7), "7");
       }
     </script>
   </body>
