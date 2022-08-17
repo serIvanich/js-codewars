@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>41</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      {
+        function XO(str) {
+          let res = true;
+          let xCount = 0;
+          let oCount = 0;
+          const arrStr = str.split("");
+
+          arrStr.forEach((e) => {
+            if (e.toLowerCase() === "x") {
+              xCount += 1;
+            } else if (e.toLowerCase() === "o") {
+              oCount += 1;
+            }
+          });
+
+          if (oCount !== xCount) {
+            res = false;
+          }
+          return res;
+        }
+
+        console.log(XO("xo"), "true");
+        console.log(XO("xxOo"), "true");
+        console.log(XO("xxxm"), "false");
+        console.log(XO("Oo"), "false");
+        console.log(XO("ooom"), "false");
+      }
+    </script>
+  </body>
+</html>

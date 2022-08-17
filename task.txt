@@ -1,0 +1,63 @@
+
+    const chooseOptimalDistance = (t, k, ls) => {
+        // твій код
+        let result
+        const copyLs = ls.slice()
+        let lengthLs = copyLs.length
+
+        if (lengthLs < k) {
+            result = null
+        } else if (lengthLs === k) {
+            const sum = sumNum(copyLs)
+            if (sum <= t) {
+                result = sum
+            } else {
+                result = null
+            }
+        } else {
+            if (k === 1) {
+                result = toCompare(copyLs, t)
+            } else if (k > 1) {
+                let localResult = []
+                for (let i = 0; i <= lengthLs - k; i++) {
+                    let firstNum = copyLs.shift()
+                    let newCopy = [...copyLs]
+                    while (newCopy.length >= k - 1) {
+                        let beginArr = [firstNum]
+                        for (let b = 0; b < k - 2; b++) {
+                            beginArr = [...beginArr, newCopy[b]]
+                        }
+                        let endArr = newCopy.slice(k-2)
+                        let toTakeResult = toMakeArr(beginArr, endArr)
+                        localResult = [...localResult, ...toTakeResult]
+                        newCopy.shift()
+                    }
+
+                }
+                localResult = localResult.map(i => sumNum(i))
+                result = toCompare(localResult, t)
+            }
+        }
+
+        function sumNum(arr) {
+            return arr.reduce((acc, num) => acc + num)
+        }
+
+        function toMakeArr(beginArr, endArr) {
+            const resultArr = []
+            for (let i = 0; i < endArr.length; i++) {
+                const arr = [...beginArr, endArr[i]]
+                resultArr.push(arr)
+            }
+            return resultArr
+        }
+
+        function toCompare(arr, t) {
+            let optimal = arr.reduce((acc, num) => {
+                return (acc < num && num <= t) ? num : acc
+            })
+            return optimal ? optimal : null
+        }
+        return result;
+    }
+   
