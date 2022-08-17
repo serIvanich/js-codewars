@@ -32,11 +32,27 @@
           return res;
         }
 
+        function paperwork(n, m) {
+          //   if (n <= 0 || m <= 0) {
+          //     return 0;
+          //   } else {
+          //     return n * m;
+          //   }
+
+          return n <= 0 || m <= 0 ? 0 : n * m;
+        }
+
         console.log(XO("xo"), "true");
         console.log(XO("xxOo"), "true");
         console.log(XO("xxxm"), "false");
         console.log(XO("Oo"), "false");
         console.log(XO("ooom"), "false");
+
+        console.log(paperwork(5, 5), "25"); //'Failed at paperwork(5, 5)');
+        console.log(paperwork(5, -5), "0"); //'Failed at paperwork(5, -5)');
+        console.log(paperwork(-5, -5), "0"); //'Failed at paperwork(-5, -5)');
+        console.log(paperwork(-5, 5), "0"); //'Failed at paperwork(-5, 5)');
+        console.log(paperwork(5, 0), "0"); //'Failed at paperwork(5, 0)');
       }
     </script>
   </body>
