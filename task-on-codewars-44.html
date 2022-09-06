@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>44</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      function expandedForm(num) {
+        let strNum = `${num}`;
+        let arrNum = strNum.split("");
+        let cycles = arrNum.length;
+        let res = "";
+        for (i = 0; i < cycles; i++) {
+          if (arrNum[i] !== "0") {
+            let slice = createNum(+arrNum[i], cycles - 1 - i);
+            if (res !== "") {
+              res += ` + ${slice}`;
+            } else {
+              res += slice;
+            }
+          }
+        }
+
+        function createNum(num, zeroCount) {
+          return `${num}${"0".repeat(zeroCount)}`;
+        }
+        return res;
+      }
+
+      // better response
+      // const expandedForm = num => (''+num)
+      //                             .split``
+      //                             .map((e,i,arr)=> e != 0 ? e + '0'.repeat(arr.length-i-1) : '')
+      //                             .filter(e=>e)
+      //                             .join` + ` ;
+
+      console.log(expandedForm(12)); // '10 + 2'
+      console.log(expandedForm(42)); // '40 + 2'
+      console.log(expandedForm(70304)); // '70000 + 300 + 4'
+    </script>
+  </body>
+</html>
