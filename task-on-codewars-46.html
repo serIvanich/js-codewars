@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>46</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      function domainName(url) {
+        //your code here
+
+        let regexp;
+        if (/www\./.test(url)) {
+          regexp = /(?<=www\.)[^\.]+/;
+        } else if (/^https?\:\/\//i.test(url)) {
+          regexp = /(?<=https?\:\/\/)[^\.]+/i;
+        } else if (/^(?<!www).+/.test(url)) {
+          regexp = /^(?<!www)[^\.]+/;
+        }
+        let result = url.match(regexp);
+
+        return result[0];
+      }
+      console.log(domainName("google.com"), "google");
+      console.log(domainName("http://google.co.jp"), "google");
+      console.log(domainName("www.xakep.ru"), "xakep");
+      console.log(domainName("https://youtube.com"), "youtube");
+      console.log(domainName("qufbctbe-ak4e.co.za/default.html"));
+      console.log(domainName("2jh1kz0q-4q3a32d2m6gaee7kckw-6.tv/default.html"));
+      console.log(domainName("12fvrpci3j7e6.co.uk/users"));
+      console.log(domainName("j-34m5s6rh82ayp355.co/img/"));
+    </script>
+  </body>
+</html>
