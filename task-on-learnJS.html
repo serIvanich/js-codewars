@@ -1,43 +1,30 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>338</title>
+  </head>
 
-</head>
+  <body>
+    <div class="block"></div>
 
-<body>
-<div class="block">
-
-</div>
-
-<script>
-    const camelize = (str) => {
-        let strArr = str.split('')
+    <script>
+      const camelize = (str) => {
+        let strArr = str.split("");
         strArr.forEach((letter, ind) => {
-            if (letter === '-') {
-                let letterUp = strArr[ind + 1].toUpperCase()
-                strArr.splice(ind - 1, 2, letterUp)
-            }
-        })
+          if (letter === "-") {
+            let letterUp = strArr[ind + 1].toUpperCase();
+            strArr.splice(ind - 1, 2, letterUp);
+          }
+        });
 
-
-        return strArr.join('')
-
-
-    }
-    console.log(camelize("background-color"))
-    console.log(camelize("list-style-image"))
-    console.log( camelize("-webkit-transition"))
-
-
-
-
-
-</script>
-</body>
-
+        return strArr.join("");
+      };
+      console.log(camelize("background-color"));
+      console.log(camelize("list-style-image"));
+      console.log(camelize("-webkit-transition"));
+    </script>
+  </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>44</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      function findUniq(arr) {
+        // let arr1 = [];
+        // let arr2 = [];
+        // arr.forEach((element) => {
+        //   if (arr1.length === 0) {
+        //     arr1.push(element);
+        //   } else if (arr1[0] === element) {
+        //     arr1.push(element);
+        //   } else if (arr2.length === 0) {
+        //     arr2.push(element);
+        //   } else if (arr2[0] === element) {
+        //     arr2.push(element);
+        //   }
+        // });
+
+        // return arr1.length > arr2.length ? arr2[0] : arr1[0];
+
+        // wow i don't do that(
+        arr.sort();
+        return arr[0] === arr[1] ? arr[arr.length - 1] : arr[0];
+      }
+
+      console.log(findUniq([1, 0, 0])); // 1
+      console.log(findUniq([0, 1, 0])); // 1
+      console.log(findUniq([0, 0, 1])); // 1
+      console.log(findUniq([1, 1, 1, 2, 1, 1])); // 2
+      console.log(findUniq([1, 1, 2, 1, 1])); // 2
+      console.log(findUniq([3, 10, 3, 3, 3])); // 10
+    </script>
+  </body>
+</html>
