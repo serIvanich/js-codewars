@@ -14,17 +14,19 @@
       function domainName(url) {
         //your code here
 
-        let regexp;
-        if (/www\./.test(url)) {
-          regexp = /(?<=www\.)[^\.]+/;
-        } else if (/^https?\:\/\//i.test(url)) {
-          regexp = /(?<=https?\:\/\/)[^\.]+/i;
-        } else if (/^(?<!www).+/.test(url)) {
-          regexp = /^(?<!www)[^\.]+/;
-        }
-        let result = url.match(regexp);
+        // let regexp;
+        // if (/www\./.test(url)) {
+        //   regexp = /(?<=www\.)[^\.]+/;
+        // } else if (/^https?\:\/\//i.test(url)) {
+        //   regexp = /(?<=https?\:\/\/)[^\.]+/i;
+        // } else if (/^(?<!www).+/.test(url)) {
+        //   regexp = /^(?<!www)[^\.]+/;
+        // }
+        // let result = url.match(regexp);
 
-        return result[0];
+        // return result[0];
+// oh my gosh!!
+        return url.replace(/.*\/\/|www.|\..*/g, ``);
       }
       console.log(domainName("google.com"), "google");
       console.log(domainName("http://google.co.jp"), "google");
