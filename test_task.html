@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test_task</title>
+  </head>
+
+  <body>
+    <script>
+      function getCombinations(str) {
+        let resultsArr = [];
+        if (typeof str !== "string") {
+          return "Error. The function should have received a string type attribute";
+        }
+        const startArr = str.split("");
+
+        for (let i = 0; i < startArr.length; i++) {
+          resultsArr = [...resultsArr, ...addPoints(startArr, i)];
+        }
+
+        function addOnePoint(arr) {
+          const memo = [];
+          for (let i = 0; i < arr.length - 1; i++) {
+            const currentArr = arr.slice();
+            currentArr[i] = `${arr[i]}.`;
+            memo.push(currentArr);
+          }
+          return memo;
+        }
+
+        function addPoints(incomingArr, startElementsLength) {
+          let memo = [];
+          const incomingArrLength = incomingArr.length;
+          if (startElementsLength === 0) {
+            memo = [...memo, ...addOnePoint(incomingArr)];
+            return memo;
+          }
+          for (let i = 0; i < incomingArrLength - startElementsLength; i++) {
+            const currentArr = incomingArr.slice(i + 1, incomingArrLength);
+            const startElements =
+              i > 0
+                ? [...incomingArr.slice(0, i), `${incomingArr[i]}.`]
+                : [`${incomingArr[i]}.`];
+
+            memo = [
+              ...memo,
+              ...addPoints(currentArr, startElementsLength - 1).map((arr) => [
+                ...startElements,
+                ...arr,
+              ]),
+            ];
+          }
+          return memo;
+        }
+
+        return resultsArr.map((e) => e.join(""));
+      }
+
+      console.log(getCombinations("1234567"));
+      console.log(getCombinations("abcdefgih"));
+      console.log(getCombinations(567));
+    </script>
+  </body>
+</html>
