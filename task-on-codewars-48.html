@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>46</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      const number = (array) =>
+        array.map((item, index) => `${index + 1}: ${item}`);
+
+      console.log(number([])); // []
+      console.log(number(["a", "b", "c"])); // ["1: a", "2: b", "3: c"]
+      console.log(number(["t", "o", "r", "t"])); // ["1: t", "2: o", "3: r", "4: t"]
+    </script>
+  </body>
+</html>
