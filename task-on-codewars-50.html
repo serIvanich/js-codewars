@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>50</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      function whatCentury(year) {
+        const centuryNumber = Math.ceil(+year / 100).toString();
+        const ending = addEnding(centuryNumber);
+        const century = `${centuryNumber}${ending}`;
+
+        function addEnding(number) {
+          let lastNumber = number.split("").pop();
+          if (number.length === 2 && number[0] === "1") {
+            return "th";
+          }
+          switch (lastNumber) {
+            case "1":
+              return "st";
+            case "2":
+              return "nd";
+            case "3":
+              return "rd";
+            default:
+              return "th";
+          }
+        }
+        return century;
+      }
+
+      console.log(whatCentury("1999")); //"20th"
+      console.log(whatCentury("2011")); //"21st"
+      console.log(whatCentury("2154")); //"22nd"
+      console.log(whatCentury("2259")); //"23rd"
+      console.log(whatCentury("1234")); //"13th"
+      console.log(whatCentury("1023")); //"11th"
+      console.log(whatCentury("2000")); //"20th"
+      console.log(whatCentury("23")); //"1st"
+    </script>
+  </body>
+</html>
