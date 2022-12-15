@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>51</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      function incrementString(strng) {
+        const regExp = /\d+$/;
+        function replacer(match) {
+          let result = `${+match + 1}`;
+          const lengthDifference = match.length - result.length;
+          return lengthDifference > 0
+            ? "0".repeat(lengthDifference) + result
+            : result;
+        }
+        return regExp.test(strng) ? strng.replace(regExp, replacer) : strng + 1;
+        //return strng.replace(/[0-8]?9*$/, (val) => ++val);
+      }
+
+      console.log(incrementString("foobar000"), "foobar001");
+      console.log(incrementString("foobar999"), "foobar1000");
+      console.log(incrementString("foobar00999"), "foobar01000");
+      console.log(incrementString("foo"), "foo1");
+      console.log(incrementString("foobar001"), "foobar002");
+      console.log(incrementString("foobar1"), "foobar2");
+      console.log(incrementString("1"), "2");
+      console.log(incrementString("009"), "010");
+      console.log(incrementString("fo99obar99"), "fo99obar100");
+    </script>
+  </body>
+</html>
