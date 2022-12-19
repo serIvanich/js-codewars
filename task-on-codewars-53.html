@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>53</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      //part 1
+      const arr = (N) => (N ? [...arr(--N), N] : []);
+      console.log(arr(5));
+      console.log(arr(11));
+
+      //part 2
+      const squares = (n) => (n ? [...squares(n - 1), n * n] : []);
+
+      const range = (n, start, step) =>
+        n ? [start, ...range(n - 1, start + step, step)] : [];
+
+      const random = (n, min, max) =>
+        Array.from(
+          { length: n },
+          () => Math.floor(Math.random() * (max - min)) + min
+        );
+
+      const primes = (n) => {
+        
+        const isPrime = (num) => {
+          let sqrtnum = Math.floor(Math.sqrt(num));
+          let prime = num !== 1;
+          for (let i = 2; i < sqrtnum + 1; i++) {
+            if (num % i === 0) {
+              prime = false;
+              break;
+            }
+          }
+          return prime;
+        };
+        let primeNumber = 1;
+        const nextPrime = () => {
+          while (!isPrime(++primeNumber)) {}
+
+          return primeNumber;
+        };
+
+        return Array.from({ length: n }, () => nextPrime());
+      };
+
+      console.log(squares(5));
+      console.log(squares(11));
+      console.log(range(6, 3, 2));
+      console.log(range(5, 1, 10));
+      console.log(random(6, 1, 22));
+      console.log(random(5, 10, 17));
+      console.log(primes(6));
+      console.log(primes(3));
+    </script>
+  </body>
+</html>
