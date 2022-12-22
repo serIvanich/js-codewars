@@ -29,7 +29,7 @@
         );
 
       const primes = (n) => {
-        
+        let number = 1;
         const isPrime = (num) => {
           let sqrtnum = Math.floor(Math.sqrt(num));
           let prime = num !== 1;
@@ -41,11 +41,11 @@
           }
           return prime;
         };
-        let primeNumber = 1;
-        const nextPrime = () => {
-          while (!isPrime(++primeNumber)) {}
 
-          return primeNumber;
+        const nextPrime = () => {
+          while (!isPrime(++number)) {}
+
+          return number;
         };
 
         return Array.from({ length: n }, () => nextPrime());
@@ -58,7 +58,7 @@
       console.log(random(6, 1, 22));
       console.log(random(5, 10, 17));
       console.log(primes(6));
-      console.log(primes(3));
+      console.log(primes(13));
     </script>
   </body>
 </html>
