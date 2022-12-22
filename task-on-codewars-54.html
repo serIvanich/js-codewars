@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>54</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      // small task 7 level
+      function friend(friends) {
+        friends.filter((f) => f.length === 4);
+      }
+
+      // task 6 level
+      function duplicateCount(text) {
+        
+        const obj = text.toLowerCase().split("").reduce((obj, item) => {
+          if (obj.hasOwnProperty(item)) {
+            obj[item] += 1;
+          } else {
+            obj[item] = 0;
+          }
+          return obj;
+        }, {});
+        return Object.values(obj).reduce((acc, item) => {
+          return item === 0 ? acc : ++acc;
+        }, 0);
+
+        // interesting
+        // return new Set(text.toLowerCase().match(/(.)(?=.*\1)/gi)).size
+        //return (s.toLowerCase().split("").sort().join("").match(/([a-z])\1+/g) || []).length;
+        
+      }
+      console.log(friend(["roma", "angela", "kostya", "gleb"]));
+      console.log(friend(["olga", "andrey", "oleksandr", "bogdan", "gora"]));
+      console.log(duplicateCount(""), 0);
+      console.log(duplicateCount("abcde"), 0);
+      console.log(duplicateCount("aabbcde"), 2);
+      console.log(duplicateCount("aabBcde"), 2);
+      console.log(duplicateCount("Indivisibility"), 1);
+      console.log(duplicateCount("Indivisibilities"), 2);
+    </script>
+  </body>
+</html>
