@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>60</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      Array.prototype.toString =
+        String.prototype.toString =
+        Boolean.prototype.toString =
+        Number.prototype.toString =
+          toString;
+
+      function toString() {
+        const item = this.valueOf();
+        if (Array.isArray(item)) {
+          let res = item.map((i) => {
+            return i.toString.call(i);
+          });
+          return `[${res.join(",")}]`;
+        } else if (+item) {
+          return item;
+        } else {
+          return item || item === "" ? `'` + item + `'` : item;
+        }
+      }
+
+      // OR with JSON
+      // function toString() {
+      //   return JSON.stringify(this).replace(/"/g, "'");
+      // };
+
+      console.log(true, true.toString());
+      console.log(Math.PI, Math.PI.toString());
+      console.log([1, 2, 3, 4, 5], [1, 2, 3, 4, 5].toString());
+      console.log([Math.PI, Math.E], [Math.PI, Math.E].toString());
+      console.log([1, 2.72, 4, 3.14, 9], [1, 2.72, 4, 3.14, 9].toString());
+      console.log(
+        ["Hello World", 3.14, "Lorem Ipsum"],
+        ["Hello World", 3.14, "Lorem Ipsum"].toString()
+      );
+      console.log(
+        [1, 2, [3, 4], [5, 6], [[7]], [8, [9]]],
+        [1, 2, [3, 4], [5, 6], [[7]], [8, [9]]].toString()
+      );
+      console.log(
+        ["", false, true, "   "],
+        ["", false, true, "   "].toString()
+      );
+
+      console.log(["foobar", [["hello"]]], ["foobar", [["hello"]]].toString());
+    </script>
+  </body>
+</html>

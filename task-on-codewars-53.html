@@ -51,6 +51,10 @@
         return Array.from({ length: n }, () => nextPrime());
       };
 
+      // the different way to resolve
+      // const primes   = (n,p=1)  => Array.from({length:n}, _=> p = getPrime(p+1));
+      // const getPrime = (n,i=2)  => i*i <= n ? n%i ? getPrime(n,i+1) : getPrime(n+1) : n;
+
       console.log(squares(5));
       console.log(squares(11));
       console.log(range(6, 3, 2));
