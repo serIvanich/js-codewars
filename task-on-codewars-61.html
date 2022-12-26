@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>61</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      // function bouncingBall(h, bounce, window) {
+      //   let res = 0;
+      //   if (h <= 0 || 0 >= bounce || bounce >= 1 || window >= h) {
+      //     return -1;
+      //   }
+
+      //   while (h * bounce > window) {
+      //     res += 2;
+      //     h = h * bounce;
+      //   }
+      //   return ++res;
+      // }
+
+      // recursion
+      function bouncingBall(h, bounce, window) {
+        return h <= 0 || 0 >= bounce || bounce >= 1 || window >= h
+          ? -1
+          : 2 + bouncingBall(h * bounce, bounce, window);
+      }
+
+      console.log(bouncingBall(3.0, 0.66, 1.5), 3);
+      console.log(bouncingBall(30.0, 0.66, 1.5), 15);
+      console.log(bouncingBall(3.0, 1.0, 1.5), -1);
+      console.log(bouncingBall(10.0, 0.6, 10), -1);
+      console.log(bouncingBall(2.0, 0.5, 1), 1);
+      console.log(bouncingBall(4.0, 0.25, 1), 1);
+    </script>
+  </body>
+</html>
