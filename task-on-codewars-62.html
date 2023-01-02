@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>62</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      function isPangram(string) {
+        return new Set(string.toLowerCase().match(/[a-z]/g)).size === 26;
+      }
+      // console.log(
+      //   isPangram("The quick brown fox jumps over the lazy dog."),
+      //   true
+      // );
+      // console.log(isPangram("This is not a pangram."), false);
+
+      //task 63
+
+      function dirReduc(arr) {
+        let str = arr.join("-");
+        let reg = /(north-south|south-north|east-west|west-east)-?/gi;
+        while (reg.test(str)) {
+          str = str.replace(reg, "");
+        }
+        return str.split("-").filter((i) => i !== "");
+      }
+      console.log(
+        dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]),
+        ["WEST"]
+      );
+      console.log(
+        dirReduc([
+          "WEST",
+          "EAST",
+          "NORTH",
+          "SOUTH",
+          "NORTH",
+          "EAST",
+          "EAST",
+          "WEST",
+          "NORTH",
+          "SOUTH",
+        ]),
+        ["EAST", "NORTH"]
+      );
+      console.log(
+        dirReduc(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"]),
+        []
+      );
+    </script>
+  </body>
+</html>
