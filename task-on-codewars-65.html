@@ -43,29 +43,29 @@
       function isValidWalk(walk) {
         //  -----one way-------
 
-        // if (walk.length !== 10) {
-        //   return false;
-        // }
-        // let str = walk.join("");
-        // let reg =
-        //   /(n([n,w,e])*s)|(s([s,w,e])*n)|(w([n,s,w])*e)|(e([n,s,e])*w)/gi;
-        // while (reg.test(str)) {
-        //   str = str.replace(reg, (elem) =>
-        //     elem.length === 2 ? "" : elem.slice(1, elem.length - 1)
-        //   );
-        // }
-        // return str === "";
-
-        // ------another way-------
-
         if (walk.length !== 10) {
           return false;
         }
-        walk = walk.reduce((obj, w) => {
-          obj.hasOwnProperty(w) ? (obj[w] += 1) : (obj[w] = 0);
-          return obj;
-        }, {});
-        return walk["n"] === walk["s"] && walk["w"] === walk["e"];
+        let str = walk.join("");
+        let reg =
+          /(n([n,w,e])*s)|(s([s,w,e])*n)|(w([n,s,w])*e)|(e([n,s,e])*w)/gi;
+        while (reg.test(str)) {
+          str = str.replace(reg, (match) =>
+            match.length === 2 ? "" : match.slice(1, match.length - 1)
+          );
+        }
+        return str === "";
+
+        // ------another way-------
+
+        //   if (walk.length !== 10) {
+        //     return false;
+        //   }
+        //   walk = walk.reduce((obj, w) => {
+        //     obj.hasOwnProperty(w) ? (obj[w] += 1) : (obj[w] = 0);
+        //     return obj;
+        //   }, {});
+        //   return walk["n"] === walk["s"] && walk["w"] === walk["e"];
       }
       console.log(
         isValidWalk(["n", "s", "n", "s", "n", "s", "n", "s", "n", "s"]),
@@ -104,17 +104,3 @@
     </script>
   </body>
 </html>
-
-<!-- walk
-.join("")
-.replace(
-  /([n][n,w,e]*[s])|([s][s,w,e]*[n])|([w][n,s,w]*[e])|([e][n,s,e]*[w])/gi,
-  (reg) => {
-    if (reg.length === 2) {
-      return "";
-    } else {
-      let res = reg.slice(1, reg.length);
-      return res;
-    }
-  }
-) === "" -->

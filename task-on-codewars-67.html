@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>67</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      function fibDigits(n) {
+        // const objTempl = [...Array(10).keys()].reduce((obj, n) => {
+        //   obj[n] = 0;
+        //   return obj;
+        // }, {});
+        const objRes = {};
+        for (let i = 0; i < 10; i++) {
+          objRes[i] = 0;
+        }
+
+        let strNumber = fib(n).toLocaleString().replace(/\D/g, "");
+
+        for (let n of strNumber) {
+          objRes[n] += 1;
+        }
+        function fib(n) {
+          let a = BigInt(0),
+            b = BigInt(1),
+            templ;
+          for (i = 0; i <= n; i++) {
+            templ = a;
+            a = a + b;
+            b = templ;
+          }
+          return b;
+        }
+        return Object.entries(objRes)
+          .filter((arr) => arr[1] !== 0)
+          .map((arr) => [arr[1], +arr[0]])
+          .sort((a, b) => (a[0] - b[0] === 0 ? b[1] - a[1] : b[0] - a[0]));
+      }
+      console.log(fibDigits(10), [[2, 5]]);
+      console.log(fibDigits(10000), [
+        [254, 3],
+        [228, 2],
+        [217, 6],
+        [217, 0],
+        [202, 5],
+        [199, 1],
+        [198, 7],
+        [197, 8],
+        [194, 4],
+        [184, 9],
+      ]);
+      console.log(fibDigits(100000), [
+        [2149, 2],
+        [2135, 1],
+        [2131, 8],
+        [2118, 9],
+        [2109, 0],
+        [2096, 3],
+        [2053, 5],
+        [2051, 6],
+        [2034, 7],
+        [2023, 4],
+      ]);
+    </script>
+  </body>
+</html>
