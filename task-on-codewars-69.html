@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>69</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      function persistence(num, count = 0) {
+        // while (num.toString().length > 1) {
+        //   num = num
+        //     .toString()
+        //     .split("")
+        //     .reduce((acc, n) => acc * n);
+        //   count += 1;
+        // }
+        // return count;
+
+        // the recursion resolve
+        return `${num}`.length > 1
+          ? persistence(
+              num
+                .toString()
+                .split("")
+                .reduce((acc, n) => acc * n),
+              ++count
+            )
+          : count;
+      }
+      console.log(persistence(39), 3);
+      console.log(persistence(4), 0);
+      console.log(persistence(25), 2);
+      console.log(persistence(999), 4);
+    </script>
+  </body>
+</html>
