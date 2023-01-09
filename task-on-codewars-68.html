@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>68</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      function towerBuilder(nFloors) {
+        return [...Array(nFloors)].map(
+          (_, index) =>
+            " ".repeat(nFloors - index - 1) +
+            "*".repeat(index * 2 + 1) +
+            " ".repeat(nFloors - index - 1)
+        );
+
+        // the other path of solution
+        // let res = [];
+        // for (let i = 0; i < nFloors; i++) {
+        //   let str =
+        //     " ".repeat(nFloors - i - 1) +
+        //     "*".repeat(i * 2 + 1) +
+        //     " ".repeat(nFloors - i - 1);
+
+        //   res.push(str);
+        // }
+        // return res;
+      }
+      console.log(towerBuilder(1), ["*"]);
+      console.log(towerBuilder(2), [" * ", "***"]);
+      console.log(towerBuilder(3), ["  *  ", " *** ", "*****"]);
+      console.log(towerBuilder(4), [
+        "   *   ",
+        "  ***  ",
+        " ***** ",
+        "*******",
+      ]);
+    </script>
+  </body>
+</html>
