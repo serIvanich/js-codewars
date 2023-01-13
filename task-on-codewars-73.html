@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>73</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      //kata 73
+
+      function wave(str) {
+
+        //one way
+        // return str.split("").reduce((res, l, ind, arr) => {
+        //   if (l === " ") {
+        //     return res;
+        //   }
+        //   let copyArr = [...arr];
+        //   copyArr.splice(ind, 1, l.toUpperCase());
+
+        //   res.push(copyArr.join(""));
+        //   return res;
+        // }, []);
+
+        //other way
+        return [...Array(str.length)]
+          .map(
+            (_, i) =>
+              `${str.slice(0, i)}${str[i].toUpperCase()}${str.slice(i + 1)}`
+          )
+          .filter((el) => el !== str);
+      }
+      console.log(wave("hello"), ["Hello", "hEllo", "heLlo", "helLo", "hellO"]);
+      console.log(wave("codewars"), [
+        "Codewars",
+        "cOdewars",
+        "coDewars",
+        "codEwars",
+        "codeWars",
+        "codewArs",
+        "codewaRs",
+        "codewarS",
+      ]);
+      console.log(wave(""), []);
+      console.log(wave("two words"), [
+        "Two words",
+        "tWo words",
+        "twO words",
+        "two Words",
+        "two wOrds",
+        "two woRds",
+        "two worDs",
+        "two wordS",
+      ]);
+      console.log(wave(" gap "), [" Gap ", " gAp ", " gaP "]);
+
+      
+    </script>
+  </body>
+</html>
