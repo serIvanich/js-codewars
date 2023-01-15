@@ -71,31 +71,69 @@
           : false;
       }
 
-      console.log(
-        comp(
-          [121, 144, 19, 161, 19, 144, 19, 11],
-          [
-            11 * 11,
-            121 * 121,
-            144 * 144,
-            19 * 19,
-            161 * 161,
-            19 * 19,
-            144 * 144,
-            19 * 19,
-          ]
-        ),
-        true
-      );
-      console.log(
-        comp(
-          [4, 7, 0, 7, 10, 4, 8, 6, 2, 0, 0, 7],
-          [49, 4, 16, 100, 0, 64, 0, 49, 36, 49, 0, 16]
-        ),
-        true
-      );
-      console.log(comp([], []), true);
-      console.log(comp([], null), false);
+      // console.log(
+      //   comp(
+      //     [121, 144, 19, 161, 19, 144, 19, 11],
+      //     [
+      //       11 * 11,
+      //       121 * 121,
+      //       144 * 144,
+      //       19 * 19,
+      //       161 * 161,
+      //       19 * 19,
+      //       144 * 144,
+      //       19 * 19,
+      //     ]
+      //   ),
+      //   true
+      // );
+      // console.log(
+      //   comp(
+      //     [4, 7, 0, 7, 10, 4, 8, 6, 2, 0, 0, 7],
+      //     [49, 4, 16, 100, 0, 64, 0, 49, 36, 49, 0, 16]
+      //   ),
+      //   true
+      // );
+      // console.log(comp([], []), true);
+      // console.log(comp([], null), false);
+
+      // kata 75
+
+      function high(x) {
+
+        //one way
+        
+        // let objWord = x.split(" ").reduce((objMaxSum, word) => {
+        //   let sum = word
+        //     .split("")
+        //     .reduce((sum, letter) => (sum += letter.charCodeAt() - 96), 0);
+        //   if (
+        //     Object.values(objMaxSum).length === 0 ||
+        //     Object.values(objMaxSum)[0] < sum
+        //   ) {
+        //     objMaxSum = { [word]: sum };
+        //   }
+        //   return objMaxSum;
+        // }, {});
+        // return Object.keys(objWord)[0];
+
+
+        //other way
+
+        let sum = (str) =>
+          str.split("").reduce((sum, let) => (sum += let.charCodeAt() - 96), 0);
+
+        return x.split(" ").sort((a, b) => sum(b) - sum(a))[0];
+      }
+
+      console.log(high("man i need a taxi up to ubud"), "taxi");
+      console.log(high("what time are we climbing up the volcano"), "volcano");
+      console.log(high("take me to semynak"), "semynak");
+      console.log(high("aa b"), "aa");
+      console.log(high("b aa"), "b");
+      console.log(high("bb d"), "bb");
+      console.log(high("d bb"), "d");
+      console.log(high("aaa b"), "aaa");
     </script>
   </body>
 </html>
