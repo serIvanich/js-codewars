@@ -32,17 +32,37 @@
           : title.replace(/(^[a-z]+)|[a-z]+/gi, replacement);
       }
 
-      console.log(titleCase(""), "");
-      console.log(
-        titleCase("a clash of KINGS", "a an the of"),
-        "A Clash of Kings"
-      );
-      console.log(
-        titleCase("THE WIND IN THE WILLOWS", "The In"),
-        "The Wind in the Willows"
-      );
-      console.log(titleCase("the quick brown fox"), "The Quick Brown Fox");
-      console.log(titleCase("First a of in", "an often into"), "First A Of In");
+      // console.log(titleCase(""), "");
+      // console.log(
+      //   titleCase("a clash of KINGS", "a an the of"),
+      //   "A Clash of Kings"
+      // );
+      // console.log(
+      //   titleCase("THE WIND IN THE WILLOWS", "The In"),
+      //   "The Wind in the Willows"
+      // );
+      // console.log(titleCase("the quick brown fox"), "The Quick Brown Fox");
+      // console.log(titleCase("First a of in", "an often into"), "First A Of In");
+
+      // kata 76
+      function queueTime(customers, n) {
+        let tills = [...Array(n)].map((el) => 0);
+        customers.forEach((t, i, arr) => {
+          let curI = i < n ? i % n : tills.indexOf(Math.min(...tills));
+          tills[curI] += t;
+        });
+        return Math.max(...tills);
+
+        
+      }
+
+      console.log(queueTime([], 1), 0);
+      console.log(queueTime([1, 2, 3, 4], 1), 10);
+      console.log(queueTime([2, 2, 3, 3, 4, 4], 2), 9);
+      console.log(queueTime([1, 2, 3, 4, 5], 100), 5);
+      console.log(queueTime([5, 3, 4], 1), 12);
+      console.log(queueTime([10, 2, 3, 3], 2), 10);
+      console.log(queueTime([2, 3, 10, 2], 2), 12);
     </script>
   </body>
 </html>
