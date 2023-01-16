@@ -48,12 +48,9 @@
       function queueTime(customers, n) {
         let tills = [...Array(n)].map((el) => 0);
         customers.forEach((t, i, arr) => {
-          let curI = i < n ? i % n : tills.indexOf(Math.min(...tills));
-          tills[curI] += t;
+          tills[tills.indexOf(Math.min(...tills))] += t;
         });
         return Math.max(...tills);
-
-        
       }
 
       console.log(queueTime([], 1), 0);
