@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>75</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      //kata 75
+
+      function titleCase(title, minorWords) {
+        function replacement(match, p1) {
+          let firstLetter =
+            !minorWords ||
+            !(
+              minorWords
+                .toLowerCase()
+                .split(" ")
+                .includes(match.toLowerCase()) && !p1
+            )
+              ? match[0].toUpperCase()
+              : match[0].toLowerCase();
+          return firstLetter + match.slice(1).toLowerCase();
+        }
+        return title.length === 0
+          ? ""
+          : title.replace(/(^[a-z]+)|[a-z]+/gi, replacement);
+      }
+
+      console.log(titleCase(""), "");
+      console.log(
+        titleCase("a clash of KINGS", "a an the of"),
+        "A Clash of Kings"
+      );
+      console.log(
+        titleCase("THE WIND IN THE WILLOWS", "The In"),
+        "The Wind in the Willows"
+      );
+      console.log(titleCase("the quick brown fox"), "The Quick Brown Fox");
+      console.log(titleCase("First a of in", "an often into"), "First A Of In");
+    </script>
+  </body>
+</html>
