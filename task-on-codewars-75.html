@@ -46,20 +46,50 @@
 
       // kata 76
       function queueTime(customers, n) {
-        let tills = [...Array(n)].map((el) => 0);
-        customers.forEach((t, i, arr) => {
-          tills[tills.indexOf(Math.min(...tills))] += t;
-        });
-        return Math.max(...tills);
+        // let tills = [...Array(n)].map((el) => 0);
+        // customers.forEach((t, i, arr) => {
+        //   tills[tills.indexOf(Math.min(...tills))] += t;
+        // });
+        // return Math.max(...tills);
+
+        //liked reduce()
+        return Math.max(
+          ...customers.reduce((acc, c) => {
+            let i = acc.indexOf(Math.min(...acc));
+            acc[i] += c;
+            return acc;
+          }, Array(n).fill(0))
+        );
       }
 
-      console.log(queueTime([], 1), 0);
-      console.log(queueTime([1, 2, 3, 4], 1), 10);
-      console.log(queueTime([2, 2, 3, 3, 4, 4], 2), 9);
-      console.log(queueTime([1, 2, 3, 4, 5], 100), 5);
-      console.log(queueTime([5, 3, 4], 1), 12);
-      console.log(queueTime([10, 2, 3, 3], 2), 10);
-      console.log(queueTime([2, 3, 10, 2], 2), 12);
+      // console.log(queueTime([], 1), 0);
+      // console.log(queueTime([1, 2, 3, 4], 1), 10);
+      // console.log(queueTime([2, 2, 3, 3, 4, 4], 2), 9);
+      // console.log(queueTime([1, 2, 3, 4, 5], 100), 5);
+      // console.log(queueTime([5, 3, 4], 1), 12);
+      // console.log(queueTime([10, 2, 3, 3], 2), 10);
+      // console.log(queueTime([2, 3, 10, 2], 2), 12);
+
+      //kata 77
+      function findNb(m) {
+
+        //one way
+        // let n = 0;
+        // let sum = 0;
+        // while (sum < m) sum += (++n) ** 3;
+        // return sum === m ? n : -1;
+
+        // other way
+        let n = Math.sqrt(0.25 + 2 * Math.sqrt(m)) - 0.5;
+        return n % 1 ? -1 : n;
+
+      }
+
+      console.log(findNb(4183059834009), 2022);
+
+      console.log(findNb(24723578342962), -1);
+      console.log(findNb(135440716410000), 4824);
+      console.log(findNb(40539911473216), 3568);
     </script>
   </body>
 </html>
