@@ -83,14 +83,46 @@
                   : "ga" + $2 + "ga");
         });
       }
-      console.log(sursurungal("0 tomato"), "0 tomato");
-      console.log(sursurungal("1 tomato"), "1 tomato");
-      console.log(sursurungal("2 tomatoes"), "2 butomatoe");
-      console.log(sursurungal("3 tomatoes"), "3 tomatoezo");
-      console.log(sursurungal("5 tomatoes"), "5 tomatoezo");
-      console.log(sursurungal("7 tomatoes"), "7 tomatoezo");
-      console.log(sursurungal("3 tomatoes"), "3 tomatoezo");
-      console.log(sursurungal("10 tomatoes"), "10 gatomatoega");
+      // console.log(sursurungal("0 tomato"), "0 tomato");
+      // console.log(sursurungal("1 tomato"), "1 tomato");
+      // console.log(sursurungal("2 tomatoes"), "2 butomatoe");
+      // console.log(sursurungal("3 tomatoes"), "3 tomatoezo");
+      // console.log(sursurungal("5 tomatoes"), "5 tomatoezo");
+      // console.log(sursurungal("7 tomatoes"), "7 tomatoezo");
+      // console.log(sursurungal("3 tomatoes"), "3 tomatoezo");
+      // console.log(sursurungal("10 tomatoes"), "10 gatomatoega");
+
+      // kata 82
+      function goodVsEvil(good, evil) {
+        let worth1 = [1, 2, 3, 3, 4, 10];
+        let worth2 = [1, 2, 2, 2, 3, 5, 10];
+        let sum1 = sum(good, worth1);
+        let sum2 = sum(evil, worth2);
+        function sum(str, arr) {
+          return str.split(" ").reduce((sum, n, i) => (sum += +n * arr[i]), 0);
+        }
+        return (
+          "Battle Result: " +
+          (sum1 < sum2
+            ? "Evil eradicates all trace of Good"
+            : sum1 === sum2
+            ? "No victor on this battle field"
+            : "Good triumphs over Evil")
+        );
+      }
+
+      console.log(
+        goodVsEvil("1 1 1 1 1 1", "1 1 1 1 1 1 1"),
+        "Battle Result: Evil eradicates all trace of Good"
+      );
+      console.log(
+        goodVsEvil("0 0 0 0 0 10", "0 1 1 1 1 0 0"),
+        "Battle Result: Good triumphs over Evil"
+      );
+      console.log(
+        goodVsEvil("1 0 0 0 0 0", "1 0 0 0 0 0 0"),
+        "Battle Result: No victor on this battle field"
+      );
     </script>
   </body>
 </html>
