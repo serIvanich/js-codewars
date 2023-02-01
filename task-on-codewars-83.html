@@ -14,58 +14,66 @@
       //kata 83
 
       function countSubsequences(needle, haystack) {
-        needle = needle.trim();
+        needle = needle.trimLeft();
         let indNee = 0;
         let countSub = 0;
-        let repeats = 0;
-        let arrCount = [];
+        let repeatNeedle = 0;
+        let repeatHaystack = 0;
+        let arrRepeats = [];
         let indHay = haystack.indexOf(needle[0]);
         if (needle.length > haystack.length || indHay < 0) {
           return 0;
         }
 
         while (needle[indNee]) {
-          while (needle[indNee] === " " && haystack[indHay] === " ") {
+          while (haystack[indHay] === " ") {
+            if (needle[indNee] === " ") {
+              indNee++;
+            }
             indHay++;
-            indNee++;
           }
           let letter = needle[indNee];
+
           if (letter !== haystack[indHay]) {
-            indHay = haystack.slice(indHay + 1).indexOf(letter);
-          }
-          if (indHay === -1) return 0;
-          let countNee = countRepeats(letter, needle.slice(indNee), 0);
-          let countHay = countRepeats(
-            letter,
-            haystack.slice(indHay),
-            needle[indNee + countNee] ? needle[indNee + countNee] : needle[0]
-          );
-          let rep = countIncomes(countNee, countHay);
-          let difference =
-            countHay - countNee === 0
-              ? 0
-              : countNee === 1 && countHay > 1
-              ? countHay
-              : // : repeats > 0
-                // ? rep * (repeats + 1)
-                rep;
-          if (letter === haystack[indHay + 1] && difference > 0) {
-            arrCount = [...arrCount, difference];
+            indHay = haystack.slice(indHay).indexOf(letter);
+            if (indHay === -1) return 0;
           }
 
-          indHay += countHay;
-          indNee += countNee;
+          //find the number of  repeats a letter
+          repeatNeedle = countRepeats(letter, needle.slice(indNee));
+          repeatHaystack = countRepeats(
+            letter,
+            haystack.slice(indHay),
+            needle[indNee + repeatNeedle]
+              ? needle[indNee + repeatNeedle]
+              : needle[0]
+          );
+
+          //check a repeat the letter in haystack
+          if (haystack.slice(indHay + 1).indexOf(letter) >= 0) {
+            let difference =
+              repeatHaystack - repeatNeedle === 0
+                ? 0
+                : repeatNeedle === 1 && repeatHaystack > 1
+                ? repeatHaystack
+                : countIncomes(repeatNeedle, repeatHaystack);
+            arrRepeats = [...arrRepeats, difference];
+          }
+          indHay += repeatHaystack;
+          indNee += repeatNeedle;
         }
+
+        // count various combinations with a few same letters in the needle
         function countIncomes(form, text, count = 0) {
           if (form === 2) {
-            count += helper(text - form + 1);
+            count += helperCount(text - form + 1);
           } else if (form > 2) {
             while (text >= form) {
               count += countIncomes(form - 1, --text);
             }
           }
 
-          function helper(num, res = 0) {
+          function helperCount(num, res = 0) {
             while (num > 0) {
               res += num;
               num--;
@@ -74,16 +82,15 @@
           }
           return count;
         }
+
         function countRepeats(letter, text, nextLetter) {
           let count = 0;
           let ind = 0;
-          if (nextLetter === 0) {
+          if (nextLetter === undefined) {
             while (text[count] === letter) {
               count++;
             }
-          } else if (nextLetter === 1) {
-            count = text.match(new RegExp(letter, "g")).length;
-          } else {
+          } else if (nextLetter) {
             while (text[ind] && text[ind] !== nextLetter) {
               if (text[ind] === letter) {
                 count++;
@@ -93,14 +100,18 @@
           }
           return count;
         }
-        //console.log(arrCount);
+
+        //work with array of the repeats
+        arrRepeats = arrRepeats.filter((n) => n > 0);
         countSub =
-          arrCount.length > 0
-            ? arrCount.reduce((sub, num, ind) => {
+          arrRepeats.length > 0
+            ? arrRepeats.reduce((sub, num, ind) => {
                 if (ind > 0) num--;
                 return (sub += sub * num);
               })
             : 1;
+
+        // check to another variant needle in the continue of haystack
         if (
           haystack.slice(indHay).indexOf(needle[0]) &&
           haystack.slice(indHay).length >= needle.length
@@ -110,19 +121,12 @@
 
         return countSub;
       }
-      console.log(
-        countSubsequences(
-          "happy birthday",
-          "hhhappyyyy biirrrrrthddaaaayyyyyyy to youuuu hhapppyyyy biirtttthdaaay too youuu happy birrrthdayy to youuu happpyyyy birrtthdaaay tooooo youu"
-        ),
-        2533968
-      );
 
       console.log(
         countSubsequences("happy birthday", "appyh appy birth day"),
         1
       );
-      //console.log(countSubsequences("happy birthday", "happybirthday"), 0);
+      console.log(countSubsequences("happy birthday", "happybirthday"), 0);
       console.log(
         countSubsequences("happy birthday", "hhaappyy bbiirrtthhddaayy"),
         2048
@@ -139,6 +143,15 @@
       console.log(countSubsequences(" yy6n8", "yyyy66nn88 "), 48);
       console.log(countSubsequences(" z6xxo", "z66xxxo "), 6);
       console.log(countSubsequences("happy birthday", "happy holidays"), 0);
+
+      // problem with this example(((
+      console.log(
+        countSubsequences(
+          "happy birthday",
+          "hhhappyyyy biirrrrrthddaaaayyyyyyy to youuuu hhapppyyyy biirtttthdaaay too youuu happy birrrthdayy to youuu happpyyyy birrtthdaaay tooooo youu"
+        ),
+        2533968
+      );
     </script>
   </body>
 </html>
