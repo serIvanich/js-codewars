@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>83</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      //kata 84
+
+      function howManyTime(plan) {
+        
+        let speed = {
+          "space transfer gate": 10000000000,
+          UFO: 10000,
+          spaceship: 5000,
+          missile: 1500,
+          airplane: 800,
+          train: 200,
+          car: 100,
+          ship: 70,
+          bike: 30,
+          motorcycle: 60,
+          walk: 10,
+          wheelchair: 2,
+          tortoise: 0.1,
+          snail: 0.0005,
+        };
+        let res = "";
+        let timeUnits = [
+          ["second", 60, 3600],
+          ["minute", 60, 60],
+          ["hour", 24, 1],
+          ["day", 7, 24],
+          ["week", 5, 168],
+          ["month", 12, 720],
+          ["year", 100, 8760],
+          ["century", 1000, 876000],
+        ];
+        let hours = plan.reduce(
+          (sum, arr) => (sum += arr[1] / speed[arr[0]]),
+          0
+        );
+        let count = 0;
+        while (count < timeUnits.length) {
+          if (hours >= 1 && count < 3) {
+            count = hours >= 24 ? 3 : 2;
+          }
+          let [unit, max, includeHours] = timeUnits[count];
+          let time = hours < 1 ? hours * includeHours : hours / includeHours;
+          time = Math.round(time);
+
+          if (time >= max) {
+            count++;
+          } else {
+            res =
+              time === 0 && count === 0
+                ? `less than 1 second`
+                : `${time} ${unit}`;
+            break;
+          }
+        }
+
+        res = res.replace(/^(\d+)(.+)$/, replacer);
+        function replacer(match, num, unit) {
+          num = +num;
+          unit =
+            unit === " century" && num > 1
+              ? " centuries"
+              : num === 1
+              ? unit
+              : unit + "s";
+          return num + unit;
+        }
+
+        return res;
+      }
+
+      console.log(howManyTime([["spaceship", 4986.75]]));
+      console.log(
+        howManyTime([
+          ["airplane", 400],
+          ["train", 400],
+        ]),
+        "3 hours"
+      );
+      console.log(howManyTime([["walk", 400]]), "2 days");
+      console.log(howManyTime([["wheelchair", 400]]), "1 week");
+      console.log(howManyTime([["UFO", 400]]), "2 minutes");
+      console.log(howManyTime([["snail", 400]]), "91 years");
+      console.log(
+        howManyTime([["space transfer gate", 400]]),
+        "less than 1 second"
+      );
+      console.log(howManyTime([["snail", 8191.66]]), "19 centuries");
+      console.log(howManyTime([["snail", 500]]), "1 century");
+    </script>
+  </body>
+</html>
+
+<!-- second, minute, hour, day, week(7 days), month(30 days), year(365 days), century(100 years)
+
+If the result < 1 second, please return "less than 1 second";
+
+If the result >= 1 second and < 1 minute, please return "1 second/n seconds";
+
+If the result >= 1 minute and < 1 hour, please return "1 minute/n minutes";
+
+and so on..
+
+and so on..
+
+If the result >= 1 year and < 1 century, please return "1 year/n years";
+
+If the result >= 1 century, please return "1 century/n centuries" ;-) -->
+
+// if (3600 * hours < 1) { // res = "less than 1 second"; // } else if
+(Math.round(3600 * hours) < 60) { // res = `${3600 * hours} second`; // } else
+if (Math.round(60 * hours) < 60) { // res = `${60 * hours} minute`; // } else if
+(hours < 24) { // res = `${hours} hour`; // } else if (hours < 168) { // res =
+`${hours / 24} day`; // } else if (hours < 720) { // res = `${hours / 168}
+week`; // } else if (hours < 8760) { // res = `${hours / 720} month`; // } else
+if (hours < 876000) { // res = `${hours / 8760} year`; // } else { // res =
+`${hours / 876000} century`; // }
