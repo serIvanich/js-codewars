@@ -26,8 +26,28 @@
         return (str.match(/[aeiou]/gi) || []).length;
       }
 
-      console.log(getCount("my pyx"), 0);
-      console.log(getCount("abracadabra"), 5);
+      // console.log(getCount("my pyx"), 0);
+      // console.log(getCount("abracadabra"), 5);
+
+      // kata 86
+
+      function stray(numbers) {
+        // one way
+        //   numbers.sort((a, b) => a - b);
+        //   let l = numbers.length;
+        //   return numbers[0] !== numbers[1]
+        //     ? numbers[0]
+        //     : numbers[l - 1] !== numbers[l - 2]
+        //     ? numbers[l - 1]
+        //     : 0;
+
+        // way with reduce
+
+        return numbers.reduce((acc, cur) => acc ^ cur);
+      }
+      console.log(stray([1, 1, 2]), 2);
+      console.log(stray([1, 2, 1]), 2);
+      console.log(stray([2, 1, 1]), 2);
     </script>
   </body>
 </html>
