@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>85</title>
+    <title>85-87</title>
   </head>
 
   <body>
@@ -45,9 +45,79 @@
 
         return numbers.reduce((acc, cur) => acc ^ cur);
       }
-      console.log(stray([1, 1, 2]), 2);
-      console.log(stray([1, 2, 1]), 2);
-      console.log(stray([2, 1, 1]), 2);
+      // console.log(stray([1, 1, 2]), 2);
+      // console.log(stray([1, 2, 1]), 2);
+      // console.log(stray([2, 1, 1]), 2);
+
+      // kata 87
+
+      function longestConsec(strarr, k) {
+        let res = "";
+        let ind = 0;
+        let n = strarr.length;
+
+        if (n === 0 || k > n || k <= 0) return res;
+
+        while (ind <= n - k) {
+          let str = strarr.slice(ind, k + ind).join("");
+          if (str.length > res.length) res = str;
+          ind++;
+        }
+        return res;
+      }
+
+      console.log(
+        longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2),
+        "abigailtheta"
+      );
+      console.log(
+        longestConsec(
+          [
+            "ejjjjmmtthh",
+            "zxxuueeg",
+            "aanlljrrrxx",
+            "dqqqaaabbb",
+            "oocccffuucccjjjkkkjyyyeehh",
+          ],
+          1
+        ),
+        "oocccffuucccjjjkkkjyyyeehh"
+      );
+      console.log(longestConsec([], 3), "");
+      console.log(
+        longestConsec(
+          [
+            "itvayloxrp",
+            "wkppqsztdkmvcuwvereiupccauycnjutlv",
+            "vweqilsfytihvrzlaodfixoyxvyuyvgpck",
+          ],
+          2
+        ),
+        "wkppqsztdkmvcuwvereiupccauycnjutlvvweqilsfytihvrzlaodfixoyxvyuyvgpck"
+      );
+      console.log(
+        longestConsec(
+          ["wlwsasphmxx", "owiaxujylentrklctozmymu", "wpgozvxxiu"],
+          2
+        ),
+        "wlwsasphmxxowiaxujylentrklctozmymu"
+      );
+      console.log(
+        longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], -2),
+        ""
+      );
+      console.log(
+        longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 3),
+        "ixoyx3452zzzzzzzzzzzz"
+      );
+      console.log(
+        longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 15),
+        ""
+      );
+      console.log(
+        longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 0),
+        ""
+      );
     </script>
   </body>
 </html>
