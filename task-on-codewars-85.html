@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>85-87</title>
+    <title>85-90</title>
   </head>
 
   <body>
@@ -155,10 +155,31 @@
         return n > 1 ? (n *= factorial(n - 1)) : 1;
       }
 
-      console.log(factorial(0), 1, "factorial for 0 is 1");
-      console.log(factorial(1), 1, "factorial for 1 is 1");
-      console.log(factorial(2), 2, "factorial for 2 is 2");
-      console.log(factorial(3), 6, "factorial for 3 is 6");
+      // console.log(factorial(0), 1, "factorial for 0 is 1");
+      // console.log(factorial(1), 1, "factorial for 1 is 1");
+      // console.log(factorial(2), 2, "factorial for 2 is 2");
+      // console.log(factorial(3), 6, "factorial for 3 is 6");
+
+      //kata 90
+
+      // const reverseLetter = (str) =>
+      //   str
+      //     .replace(/[^a-z]/gi, "")
+      //     .split("")
+      //     .reverse()
+      //     .join("");
+
+      // the interesting solution
+      const reverseLetter = (str) =>
+        [...str].reduce((w, l) => (/[a-z]/i.test(l) ? l + w : w), "");
+
+      console.log(reverseLetter("krishan"), "nahsirk");
+
+      console.log(reverseLetter("ultr53o?n"), "nortlu");
+
+      console.log(reverseLetter("ab23c"), "cba");
+
+      console.log(reverseLetter("krish21an"), "nahsirk");
     </script>
   </body>
 </html>
