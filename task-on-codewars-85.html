@@ -66,57 +66,76 @@
         return res;
       }
 
+      // console.log(
+      //   longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2),
+      //   "abigailtheta"
+      // );
+      // console.log(
+      //   longestConsec(
+      //     [
+      //       "ejjjjmmtthh",
+      //       "zxxuueeg",
+      //       "aanlljrrrxx",
+      //       "dqqqaaabbb",
+      //       "oocccffuucccjjjkkkjyyyeehh",
+      //     ],
+      //     1
+      //   ),
+      //   "oocccffuucccjjjkkkjyyyeehh"
+      // );
+      // console.log(longestConsec([], 3), "");
+      // console.log(
+      //   longestConsec(
+      //     [
+      //       "itvayloxrp",
+      //       "wkppqsztdkmvcuwvereiupccauycnjutlv",
+      //       "vweqilsfytihvrzlaodfixoyxvyuyvgpck",
+      //     ],
+      //     2
+      //   ),
+      //   "wkppqsztdkmvcuwvereiupccauycnjutlvvweqilsfytihvrzlaodfixoyxvyuyvgpck"
+      // );
+      // console.log(
+      //   longestConsec(
+      //     ["wlwsasphmxx", "owiaxujylentrklctozmymu", "wpgozvxxiu"],
+      //     2
+      //   ),
+      //   "wlwsasphmxxowiaxujylentrklctozmymu"
+      // );
+      // console.log(
+      //   longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], -2),
+      //   ""
+      // );
+      // console.log(
+      //   longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 3),
+      //   "ixoyx3452zzzzzzzzzzzz"
+      // );
+      // console.log(
+      //   longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 15),
+      //   ""
+      // );
+      // console.log(
+      //   longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 0),
+      //   ""
+      // );
+
+      // kata 88
+
+      const disemvowel = (str) => str.replace(/[aeiou]/gi, "");
+
       console.log(
-        longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2),
-        "abigailtheta"
+        disemvowel("This website is for losers LOL!"),
+        "Ths wbst s fr lsrs LL!"
       );
       console.log(
-        longestConsec(
-          [
-            "ejjjjmmtthh",
-            "zxxuueeg",
-            "aanlljrrrxx",
-            "dqqqaaabbb",
-            "oocccffuucccjjjkkkjyyyeehh",
-          ],
-          1
+        disemvowel(
+          "No offense but,\nYour writing is among the worst I've ever read"
         ),
-        "oocccffuucccjjjkkkjyyyeehh"
-      );
-      console.log(longestConsec([], 3), "");
-      console.log(
-        longestConsec(
-          [
-            "itvayloxrp",
-            "wkppqsztdkmvcuwvereiupccauycnjutlv",
-            "vweqilsfytihvrzlaodfixoyxvyuyvgpck",
-          ],
-          2
-        ),
-        "wkppqsztdkmvcuwvereiupccauycnjutlvvweqilsfytihvrzlaodfixoyxvyuyvgpck"
+        "N ffns bt,\nYr wrtng s mng th wrst 'v vr rd"
       );
       console.log(
-        longestConsec(
-          ["wlwsasphmxx", "owiaxujylentrklctozmymu", "wpgozvxxiu"],
-          2
-        ),
-        "wlwsasphmxxowiaxujylentrklctozmymu"
-      );
-      console.log(
-        longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], -2),
-        ""
-      );
-      console.log(
-        longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 3),
-        "ixoyx3452zzzzzzzzzzzz"
-      );
-      console.log(
-        longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 15),
-        ""
-      );
-      console.log(
-        longestConsec(["it", "wkppv", "ixoyx", "3452", "zzzzzzzzzzzz"], 0),
-        ""
+        disemvowel("What are you, a communist?"),
+        "Wht r y,  cmmnst?"
       );
     </script>
   </body>
