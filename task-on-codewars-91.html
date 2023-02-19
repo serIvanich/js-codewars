@@ -46,10 +46,22 @@
         return result.reverse().join("");
       }
 
-      console.log(addBinary(1, 2), "11");
-      //"Something is wrong, no results!"
-      console.log(addBinary(1, 1), "10");
-      console.log(addBinary(5, 9), "1110");
+      // console.log(addBinary(1, 2), "11");
+      // console.log(addBinary(1, 1), "10");
+      // console.log(addBinary(5, 9), "1110");
+
+      //kata 93
+
+      const capitals = (word) => {
+        return word.split("").reduce((arrInd, word, ind) => {
+          if (word === word.toUpperCase()) {
+            arrInd.push(ind);
+          }
+          return arrInd;
+        }, []);
+      };
+// return [...word].reduce((pre, val, idx) => /[A-Z]/.test(val)? [...pre, idx] : pre, []);
+      console.log(capitals("CodEWaRs"), [0, 3, 4, 6]);
     </script>
   </body>
 </html>
