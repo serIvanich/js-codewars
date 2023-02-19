@@ -60,8 +60,40 @@
           return arrInd;
         }, []);
       };
-// return [...word].reduce((pre, val, idx) => /[A-Z]/.test(val)? [...pre, idx] : pre, []);
-      console.log(capitals("CodEWaRs"), [0, 3, 4, 6]);
+      // return [...word].reduce((pre, val, idx) => /[A-Z]/.test(val)? [...pre, idx] : pre, []);
+
+      // console.log(capitals("CodEWaRs"), [0, 3, 4, 6]);
+
+      // kata 94
+
+      const printerError = (s) =>
+        `${(s.match(/[n-z]/gi) || []).length}/${s.length}`;
+
+      console.log(
+        printerError(
+          `ibjljmeciljicciddeebgkjijbgdfekmjgglajkbeglfmjmlmbeeif
+          lklaaekbghdcjdmggfkmkbfekhcfbfeahcibmdcbkkggfgkjgljacga
+          idhdkgcmmdgcfmeabcmahfcgaihfhgahamlcimdebgfjbimagcfdfeg
+          bhgjaflhagiibjjigjmkbekcekmamegdlcjlcjegibbljiedghdieii
+          aegbjbfmkmjmjbfjidmdmbcjilbbefamkeijcifbechjlehaecjbcbk
+          dhjgkmjjkeekkkbcmhhgeilffbghfgbeadcaagcbcffdajmheahajmm
+          lgimgmgbjmdbjdkmlgfdbjcjhegefbakdkdlldlhmdjillbhkdddkca
+          bcmakabhgjegelmbklmjackbikmdhiccjcdbadjdfmcmgflfglclegb
+          mhgjlcjfgjefegaibedmlakdglbjabailgjkgefmlmmcmgbckfkblen
+          membcdfjbhgmjghjudchkbbkkhfccakfboefbicmelddemieearmbge
+          eeadldmlkhgiwdbbhfcjleaclammhsfaedkiemeeajghigqfgdbmbge
+          ggdigkdfnbdffjjadcbjldlfgufjhjhmcgiagghcajoimbgcam`
+        ),
+        "10/654"
+      );
+      console.log(printerError("aaabbbbhaijjjm"), "0/14");
+      console.log(printerError("aaaxbbbbyyhwawiwjjjwwm"), "8/22");
+      console.log(
+        printerError(
+          "aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz"
+        ),
+        "3/56"
+      );
     </script>
   </body>
 </html>
