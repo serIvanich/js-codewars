@@ -25,9 +25,31 @@
       const sequenceSum = (begin, end, step) =>
         begin > end ? 0 : begin + sequenceSum(begin + step, end, step);
 
-      console.log(sequenceSum(2, 6, 2), 12);
-      console.log(sequenceSum(1, 5, 1), 15);
-      console.log(sequenceSum(1, 5, 3), 5);
+      // console.log(sequenceSum(2, 6, 2), 12);
+      // console.log(sequenceSum(1, 5, 1), 15);
+      // console.log(sequenceSum(1, 5, 3), 5);
+
+      //kata 92
+
+      //const addBinary = (a, b) => (a + b).toString(2);
+
+      //another way with own method toString
+      function addBinary(a, b) {
+        let number = a + b;
+        let result = [];
+
+        while (number > 0) {
+          result.push(number % 2);
+          number = Math.floor(number / 2);
+        }
+
+        return result.reverse().join("");
+      }
+
+      console.log(addBinary(1, 2), "11");
+      //"Something is wrong, no results!"
+      console.log(addBinary(1, 1), "10");
+      console.log(addBinary(5, 9), "1110");
     </script>
   </body>
 </html>
