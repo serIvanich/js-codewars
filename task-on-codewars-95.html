@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>95</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      //kata 95
+
+      function doMath(s) {
+        // the way with array.sort()
+
+        // return Math.round(
+        //   s
+        //     .split(" ")
+        //     .sort((a, b) => {
+        //       a = a.replace(/[^a-z]/gi, "");
+        //       b = b.replace(/[^a-z]/gi, "");
+        //       return a === b ? 0 : a < b ? -1 : 1;
+        //     })
+        //     .map((str) => +str.replace(/[a-z]/i, ""))
+        //     .reduce((res, num, ind) => {
+        //       let sign = --ind < 4 ? ind : ind % 4;
+        //       return sign === 0
+        //         ? res + num
+        //         : sign === 1
+        //         ? res - num
+        //         : sign === 2
+        //         ? res * num
+        //         : res / num;
+        //     })
+        // );
+
+        // another way
+        let alphabet = [...Array(26).keys()].map((i) =>
+          String.fromCharCode(i + 97)
+        );
+        let numbers = [];
+        for (letter of alphabet) {
+          let currentNum = s.match(new RegExp(`(\\d*${letter}\\d*)`, "g"));
+          if (currentNum)
+            numbers = [
+              ...numbers,
+              ...currentNum.map((n) => +n.replace(/[a-z]/i, "")),
+            ];
+        }
+        return Math.round(
+          numbers.reduce((result, num, ind) => {
+            let sign = --ind < 4 ? ind : ind % 4;
+
+            return sign === 0
+              ? result + num
+              : sign === 1
+              ? result - num
+              : sign === 2
+              ? result * num
+              : result / num;
+          })
+        );
+      }
+      console.log(
+        doMath(
+          "2727w8 c36669 824x6 4b6093 687b4 4180b5 d847 27b6 67y21 d7116 65a3"
+        ),
+        1586341
+      );
+      console.log(
+        doMath(
+          "23x94 d782 17y8 d489 d58274 4c976 977y5 118x78 6c618 x7740 53d5"
+        ),
+        -12311
+      );
+      console.log(doMath("24z6 1z23 y369 89z 900b"), 1414);
+      console.log(doMath("24z6 1x23 y369 89a 900b"), 1299);
+      console.log(doMath("10a 90x 14b 78u 45a 7b 34y"), 60);
+      console.log(doMath("111a 222c 444y 777u 999a 888p"), 1459);
+      console.log(
+        doMath(
+          "z555 y73968 c580 a6358 1z352 d3443 a4843 4z56 838a6 79b840 73y7"
+        ),
+        421815
+      );
+    </script>
+  </body>
+</html>
