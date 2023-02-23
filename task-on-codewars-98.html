@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>98</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      //kata 98
+      function wordGenerator(str) {
+        let res = [];
+        const vowels = "aeiou";
+        str = str.toLowerCase();
+        const regexp = new RegExp(`[${vowels}]`);
+
+        if (!regexp.test(str)) {
+          res = [str];
+        } else {
+          for (let letter of vowels) {
+            let currentId = 0;
+            let currentStr = [
+              str.replace(regexp, (match, offset, input) => {
+                currentId = offset;
+                return letter;
+              }),
+            ];
+
+            let nextStr = str.slice(currentId + 1);
+            if (nextStr && regexp.test(nextStr)) {
+              currentStr = wordGenerator(nextStr).map(
+                (w) => currentStr[0].slice(0, currentId + 1) + w
+              );
+            }
+            res = [...res, ...currentStr];
+          }
+        }
+        return res;
+
+        // !!!!!short solution!!!!!
+
+        // return [...str.toLowerCase()]
+        //   .reduce(
+        //     (s, v) =>
+        //       [].concat(
+        //         ...(/[aeiou]/.test(v) ? [..."aeiou"] : [v]).map((c) =>
+        //           s.map((t) => t + c)
+        //         )
+        //       ),
+        //     [""]
+        //   )
+        //   .sort();
+      }
+
+      console.log(
+        wordGenerator("AH"),
+        ["ah", "eh", "ih", "oh", "uh"],
+        "instead got:AH"
+      );
+      console.log(
+        wordGenerator("Pszczyna"),
+        ["pszczyna", "pszczyne", "pszczyni", "pszczyno", "pszczynu"],
+        "Not quite right!"
+      );
+      console.log(
+        wordGenerator("aa"),
+        [
+          "aa",
+          "ae",
+          "ai",
+          "ao",
+          "au",
+          "ea",
+          "ee",
+          "ei",
+          "eo",
+          "eu",
+          "ia",
+          "ie",
+          "ii",
+          "io",
+          "iu",
+          "oa",
+          "oe",
+          "oi",
+          "oo",
+          "ou",
+          "ua",
+          "ue",
+          "ui",
+          "uo",
+          "uu",
+        ],
+        "Check if it works correctly with vowels"
+      );
+      console.log(
+        wordGenerator("b"),
+        ["b"],
+        "Check how function works without vowels"
+      );
+    </script>
+  </body>
+</html>
