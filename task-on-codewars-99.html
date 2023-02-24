@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>99</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      //kata 99
+
+      function getGrowth(...args) {
+        function strMaker(num, dif, per) {
+          return `${num} (${dif >= 0 ? "+" + dif : dif}, ${
+            dif >= 0 ? `+${per}` : per
+          }%)`;
+        }
+
+        function mapArgs(n, i, arr) {
+          if (i === 0) {
+            return strMaker(n, 0, 0);
+          }
+          let difference = n - arr[i - 1];
+          let percent = Math.round(difference / (arr[i - 1] / 100));
+          return strMaker(n, difference, percent);
+        }
+
+        return args.map(mapArgs).join(", ");
+      }
+
+      console.log(
+        getGrowth(1, 2, 3),
+        "1 (+0, +0%), 2 (+1, +100%), 3 (+1, +50%)"
+      );
+
+      console.log(
+        getGrowth(5, 10, 25),
+        "5 (+0, +0%), 10 (+5, +100%), 25 (+15, +150%)"
+      );
+
+      console.log(
+        getGrowth(100, 50, 10),
+        "100 (+0, +0%), 50 (-50, -50%), 10 (-40, -80%)"
+      );
+    </script>
+  </body>
+</html>
