@@ -32,20 +32,37 @@
         return args.map(mapArgs).join(", ");
       }
 
-      console.log(
-        getGrowth(1, 2, 3),
-        "1 (+0, +0%), 2 (+1, +100%), 3 (+1, +50%)"
-      );
+      // console.log(
+      //   getGrowth(1, 2, 3),
+      //   "1 (+0, +0%), 2 (+1, +100%), 3 (+1, +50%)"
+      // );
 
-      console.log(
-        getGrowth(5, 10, 25),
-        "5 (+0, +0%), 10 (+5, +100%), 25 (+15, +150%)"
-      );
+      // console.log(
+      //   getGrowth(5, 10, 25),
+      //   "5 (+0, +0%), 10 (+5, +100%), 25 (+15, +150%)"
+      // );
 
-      console.log(
-        getGrowth(100, 50, 10),
-        "100 (+0, +0%), 50 (-50, -50%), 10 (-40, -80%)"
-      );
+      // console.log(
+      //   getGrowth(100, 50, 10),
+      //   "100 (+0, +0%), 50 (-50, -50%), 10 (-40, -80%)"
+      // );
+
+      // kata 100
+
+      function abbreviate(string) {
+        return string.replace(
+          /[a-z]{4,}/gi,
+          (match, offset, input) =>
+            match[0] + (match.length - 2) + match[match.length - 1]
+        );
+
+        // cooler way
+        // return string.replace(/\B\w{2,}\B/g, (match) => match.length);
+      }
+      console.log(abbreviate("internationalization"), "i18n");
+      console.log(abbreviate("accessibility"), "a11y");
+      console.log(abbreviate("Accessibility"), "A11y");
+      console.log(abbreviate("elephant-ride"), "e6t-r2e");
     </script>
   </body>
 </html>
