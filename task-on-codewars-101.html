@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>101</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      //kata 101
+
+      function digitalRoot(n) {
+        return n < 10
+          ? n
+          : digitalRoot(
+              n
+                .toString()
+                .split("")
+                .reduce((s, num) => +s + +num)
+            );
+
+            // another various
+            //return (n - 1) % 9 + 1;
+      }
+
+      
+      console.log(digitalRoot(16), 7);
+      console.log(digitalRoot(456), 6);
+    </script>
+  </body>
+</html>
