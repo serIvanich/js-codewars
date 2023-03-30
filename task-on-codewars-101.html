@@ -23,13 +23,36 @@
                 .reduce((s, num) => +s + +num)
             );
 
-            // another various
-            //return (n - 1) % 9 + 1;
+        // another various
+        //return (n - 1) % 9 + 1;
       }
 
-      
-      console.log(digitalRoot(16), 7);
-      console.log(digitalRoot(456), 6);
+      // console.log(digitalRoot(16), 7);
+      // console.log(digitalRoot(456), 6);
+
+      // kata 102
+
+      function createPhoneNumber(numbers) {
+        // return `(${numbers.splice(0, 3).join("")}) ${numbers
+        //   .splice(0, 3)
+        //   .join("")}-${numbers.join("")}`;
+
+        // various with regex
+        return numbers.join("").replace(/^(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+      }
+
+      console.log(
+        createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]),
+        "(123) 456-7890"
+      );
+      console.log(
+        createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+        "(111) 111-1111"
+      );
+      console.log(
+        createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]),
+        "(123) 456-7890"
+      );
     </script>
   </body>
 </html>
