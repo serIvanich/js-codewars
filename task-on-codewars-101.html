@@ -41,18 +41,42 @@
         return numbers.join("").replace(/^(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
       }
 
-      console.log(
-        createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]),
-        "(123) 456-7890"
-      );
-      console.log(
-        createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
-        "(111) 111-1111"
-      );
-      console.log(
-        createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]),
-        "(123) 456-7890"
-      );
+      // console.log(
+      //   createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]),
+      //   "(123) 456-7890"
+      // );
+      // console.log(
+      //   createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+      //   "(111) 111-1111"
+      // );
+      // console.log(
+      //   createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]),
+      //   "(123) 456-7890"
+      // );
+
+      //kata 103
+
+      // function findMissingLetter(array) {
+      //   return String.fromCharCode(
+      //     array
+      //       .map((l) => l.charCodeAt())
+      //       .reduce((uniCode, num, ind, arr) => {
+      //         if (arr[ind + 1] && num + 2 === arr[ind + 1]) {
+      //           uniCode = num + 1;
+      //         }
+      //         return uniCode;
+      //       }, 0)
+      //   );
+      // }
+
+      // the interesting solution
+      findMissingLetter = ([a, b, ...c]) =>
+        b.charCodeAt() - a.charCodeAt() < 2
+          ? findMissingLetter([b, ...c])
+          : String.fromCharCode(a.charCodeAt() + 1);
+
+      console.log(findMissingLetter(["a", "b", "c", "d", "f"]), "e");
+      console.log(findMissingLetter(["O", "Q", "R", "S"]), "P");
     </script>
   </body>
 </html>
