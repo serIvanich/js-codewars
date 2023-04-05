@@ -75,8 +75,36 @@
           ? findMissingLetter([b, ...c])
           : String.fromCharCode(a.charCodeAt() + 1);
 
-      console.log(findMissingLetter(["a", "b", "c", "d", "f"]), "e");
-      console.log(findMissingLetter(["O", "Q", "R", "S"]), "P");
+      // console.log(findMissingLetter(["a", "b", "c", "d", "f"]), "e");
+      // console.log(findMissingLetter(["O", "Q", "R", "S"]), "P");
+
+      //kata 103
+
+      function findOutlier(integers) {
+        
+        // return integers.find((n, i, arr) => {
+        //   let arrCopy = arr.slice();
+        //   arrCopy.splice(i, 1);
+        //   return (
+        //     arrCopy.filter((item) => Math.abs(item) % 2 === Math.abs(n) % 2)
+        //       .length === 0
+        //   );
+        // });
+
+        // another way
+        const odd = integers.filter((item) => item % 2 === 0);
+        const even = integers.filter((item) => item % 2 !== 0);
+        return odd.length === 1 ? odd[0] : even[0];
+      }
+
+      console.log(findOutlier([0, 1, 2]), 1);
+      console.log(findOutlier([1, 2, 3]), 2);
+      console.log(findOutlier([2, 6, 8, 10, 3]), 3);
+      console.log(findOutlier([0, 0, 3, 0, 0]), 3);
+      console.log(
+        findOutlier([1, 1, -1, 1, 1, -44, 7, 7, 7, 7, 7, 7, 7, 7]),
+        -44
+      );
     </script>
   </body>
 </html>
