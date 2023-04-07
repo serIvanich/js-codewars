@@ -16,16 +16,52 @@
       const inArray = (array1, array2) =>
         array1.filter((subStr) => array2.join(",").includes(subStr)).sort();
 
-      let a2 = ["lively", "alive", "harp", "sharp", "armstrong"];
+      // let a2 = ["lively", "alive", "harp", "sharp", "armstrong"];
 
-      let a1 = ["xyz", "live", "strong"];
-      console.log(inArray(a1, a2), ["live", "strong"]);
+      // let a1 = ["xyz", "live", "strong"];
+      // console.log(inArray(a1, a2), ["live", "strong"]);
 
-      a1 = ["live", "strong", "arp"];
-      console.log(inArray(a1, a2), ["arp", "live", "strong"]);
+      // a1 = ["live", "strong", "arp"];
+      // console.log(inArray(a1, a2), ["arp", "live", "strong"]);
 
-      a1 = ["tarp", "mice", "bull"];
-      console.log(inArray(a1, a2), []);
+      // a1 = ["tarp", "mice", "bull"];
+      // console.log(inArray(a1, a2), []);
+
+      // kata 106
+
+      function spinWords(string) {
+        return string.replace(
+          /\w{5,}/gi,
+          (word) => word.split("").reverse().join("")
+          // another way
+          // word.replace(/\w/gi, (m, i, input) =>
+          //   input.substr(input.length - i - 1, 1)
+          // )
+        );
+        // also different
+        // let r = "";
+        // let c = 1;
+        // while (c <= match.length) {
+        //   r += match.substr(match.length - c++, 1);
+        // }
+        // return r;
+      }
+      console.log(spinWords("Welcome"), "emocleW");
+      console.log(spinWords("Hey fellow warriors"), "Hey wollef sroirraw");
+      console.log(spinWords("This is a test"), "This is a test");
+      console.log(spinWords("This is another test"), "This is rehtona test");
+      console.log(
+        spinWords("You are almost to the last test"),
+        "You are tsomla to the last test"
+      );
+      console.log(
+        spinWords("Just kidding there is still one more"),
+        "Just gniddik ereht is llits one more"
+      );
+      console.log(
+        spinWords("Seriously this is the last one"),
+        "ylsuoireS this is the last one"
+      );
     </script>
   </body>
 </html>
