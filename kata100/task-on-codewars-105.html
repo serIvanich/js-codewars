@@ -81,7 +81,17 @@
         //     );
       }
 
-      console.log(solution(10), 23);
+      //console.log(solution(10), 23);
+
+      // kata 108
+      function pigIt(str) {
+        return str.replace(/\b(\w)(\w*)/gi, (match, p1, p2) => p2 + p1 + "ay");
+
+        // some different moment
+        // return str.replace(/\b(\w)(\w*)/gi, "$2$1ay");
+      }
+      console.log(pigIt("Pig latin is cool"), "igPay atinlay siay oolcay");
+      console.log(pigIt("This is my string"), "hisTay siay ymay tringsay");
     </script>
   </body>
 </html>
