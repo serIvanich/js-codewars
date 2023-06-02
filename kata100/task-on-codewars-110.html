@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>105</title>
+  </head>
+
+  <body>
+    <div class="block"></div>
+
+    <script>
+      //kata 110
+      const toCamelCase = (str) =>
+        str.replace(/[_-]([a-z])/gi, (match, p) => p.toUpperCase());
+
+      console.log(toCamelCase(""));
+      console.log(toCamelCase("the_stealth_warrior"), "theStealthWarrior");
+      console.log(toCamelCase("The-Stealth-Warrior"), "TheStealthWarrior");
+      console.log(toCamelCase("A-B-C"), "ABC");
+    </script>
+  </body>
+</html>
