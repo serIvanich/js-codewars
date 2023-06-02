@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>105</title>
+    <title>110</title>
   </head>
 
   <body>
@@ -15,10 +15,57 @@
       const toCamelCase = (str) =>
         str.replace(/[_-]([a-z])/gi, (match, p) => p.toUpperCase());
 
-      console.log(toCamelCase(""));
-      console.log(toCamelCase("the_stealth_warrior"), "theStealthWarrior");
-      console.log(toCamelCase("The-Stealth-Warrior"), "TheStealthWarrior");
-      console.log(toCamelCase("A-B-C"), "ABC");
+      // console.log(toCamelCase(""));
+      // console.log(toCamelCase("the_stealth_warrior"), "theStealthWarrior");
+      // console.log(toCamelCase("The-Stealth-Warrior"), "TheStealthWarrior");
+      // console.log(toCamelCase("A-B-C"), "ABC");
+
+      // kata 111
+
+      function findHack(arr) {
+        let letterGrades = {
+          A: 30,
+          B: 20,
+          C: 10,
+          D: 5,
+        };
+        return arr.reduce((resArr, inArr) => {
+          let sumGrades = inArr[2].reduce(
+            (sum, grade) =>
+              letterGrades[grade] ? (sum += letterGrades[grade]) : sum,
+            0
+          );
+          if (inArr[2].filter((l) => l === "A" || l === "B").length >= 5) {
+            sumGrades += 20;
+          }
+          if (sumGrades < inArr[1]) resArr.push(inArr[0]);
+          return resArr;
+        }, []);
+      }
+
+      // console.log(
+      //   findHack([
+      //     ["name1", 150, ["B", "A", "A", "C", "A", "A"]],
+      //     ["name2", 120, ["B", "A", "A", "A"]],
+      //     ["name3", 160, ["B", "A", "A", "A", "A"]],
+      //     ["name4", 140, ["B", "A", "A", "C", "A"]],
+      //   ])
+      // );
+      console.log(
+        findHack([
+          ["Bill Webb", 40, ["F", "B", "C", "C"]],
+          ["Doe Webb", 70, ["E", "E", "B", "C", "B"]],
+          ["Jane Webb", 30, ["F", "E", "D", "D", "E"]],
+          ["Bill Lawrence", 90, ["C", "E", "A", "B", "C", "G"]],
+          ["Jack Webb", 25, ["B", "D", "E", "E"]],
+          ["Jack Brown", 105, ["A", "B", "G", "F", "A", "D"]],
+          ["Bill Brown", 50, ["H", "G", "G", "A", "F"]],
+          ["Jane Lawrence", 85, ["C", "E", "A", "D", "C", "A"]],
+          ["Jack Webb", 80, ["C", "F", "A", "B"]],
+          ["Doe Webb", 15, ["D", "H", "G", "G", "E", "C"]],
+        ]),
+        "'Doe Webb', 'Jane Webb', 'Bill Lawrence', 'Jack Brown', 'Bill Brown', 'Jack Webb'"
+      );
     </script>
   </body>
 </html>
