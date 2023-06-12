@@ -51,21 +51,44 @@
       //     ["name4", 140, ["B", "A", "A", "C", "A"]],
       //   ])
       // );
-      console.log(
-        findHack([
-          ["Bill Webb", 40, ["F", "B", "C", "C"]],
-          ["Doe Webb", 70, ["E", "E", "B", "C", "B"]],
-          ["Jane Webb", 30, ["F", "E", "D", "D", "E"]],
-          ["Bill Lawrence", 90, ["C", "E", "A", "B", "C", "G"]],
-          ["Jack Webb", 25, ["B", "D", "E", "E"]],
-          ["Jack Brown", 105, ["A", "B", "G", "F", "A", "D"]],
-          ["Bill Brown", 50, ["H", "G", "G", "A", "F"]],
-          ["Jane Lawrence", 85, ["C", "E", "A", "D", "C", "A"]],
-          ["Jack Webb", 80, ["C", "F", "A", "B"]],
-          ["Doe Webb", 15, ["D", "H", "G", "G", "E", "C"]],
-        ]),
-        "'Doe Webb', 'Jane Webb', 'Bill Lawrence', 'Jack Brown', 'Bill Brown', 'Jack Webb'"
-      );
+      // console.log(
+      //   findHack([
+      //     ["Bill Webb", 40, ["F", "B", "C", "C"]],
+      //     ["Doe Webb", 70, ["E", "E", "B", "C", "B"]],
+      //     ["Jane Webb", 30, ["F", "E", "D", "D", "E"]],
+      //     ["Bill Lawrence", 90, ["C", "E", "A", "B", "C", "G"]],
+      //     ["Jack Webb", 25, ["B", "D", "E", "E"]],
+      //     ["Jack Brown", 105, ["A", "B", "G", "F", "A", "D"]],
+      //     ["Bill Brown", 50, ["H", "G", "G", "A", "F"]],
+      //     ["Jane Lawrence", 85, ["C", "E", "A", "D", "C", "A"]],
+      //     ["Jack Webb", 80, ["C", "F", "A", "B"]],
+      //     ["Doe Webb", 15, ["D", "H", "G", "G", "E", "C"]],
+      //   ]),
+      //   "'Doe Webb', 'Jane Webb', 'Bill Lawrence', 'Jack Brown', 'Bill Brown', 'Jack Webb'"
+      // );
+
+      // kata 112
+
+      function solution(str, res = []) {
+
+        // with recursion
+        // if (str.length > 1) {
+        //   res.push(str.slice(0, 2));
+        //   solution(str.slice(2), res);
+        // } else {
+        //   if (str.length === 1) {
+        //     res.push(str + "_");
+        //   }
+        // }
+        // return res;
+
+        // the best
+        return `${str}_`.match(/\w\w/g) || [];
+      }
+
+      console.log(solution("abcdef"), ["ab", "cd", "ef"]);
+      console.log(solution("abcdefg"), ["ab", "cd", "ef", "g_"]);
+      console.log(solution(""), []);
     </script>
   </body>
 </html>
