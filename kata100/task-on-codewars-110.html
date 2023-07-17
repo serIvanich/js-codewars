@@ -91,44 +91,65 @@
 
       // kata 113
 
-      //myself solusion
+      //myself solution
       const moveZeros = (arr) =>
         arr.sort((a, b) => (String(b) === "0" ? -1 : 0));
 
-      console.log(
-        moveZeros([1, 2, 0, 1, 0, 1, 0, 3, 0, 1]),
-        [1, 2, 1, 1, 3, 1, 0, 0, 0, 0]
-      );
-      console.log(
-        moveZeros([
-          9,
-          "4",
-          null,
-          "6",
-          2,
-          2,
-          4,
-          "8",
-          4,
-          "2",
-          false,
-          "6",
-          {},
-          {},
-          "2",
-          8,
-          null,
-          [],
-          {},
-          0,
-          0,
-          6,
-          2,
-          5,
-          "5",
-          "0",
-        ])
-      );
+      // console.log(
+      //   moveZeros([1, 2, 0, 1, 0, 1, 0, 3, 0, 1]),
+      //   [1, 2, 1, 1, 3, 1, 0, 0, 0, 0]
+      // );
+      // console.log(
+      //   moveZeros([
+      //     9,
+      //     "4",
+      //     null,
+      //     "6",
+      //     2,
+      //     2,
+      //     4,
+      //     "8",
+      //     4,
+      //     "2",
+      //     false,
+      //     "6",
+      //     {},
+      //     {},
+      //     "2",
+      //     8,
+      //     null,
+      //     [],
+      //     {},
+      //     0,
+      //     0,
+      //     6,
+      //     2,
+      //     5,
+      //     "5",
+      //     "0",
+      //   ])
+      // );
+
+
+      // kata 114
+      function money_value(s)
+        {
+
+         Number(s.replace(/[\s\$]/g, '')) || 0.0
+        }
+
+console.log( money_value("12.34"), 12.34 )
+console.log( money_value(" $5.67"), 5.67 )
+console.log( money_value("-0.89"), -0.89 )
+console.log( money_value("-$ 0.1"), -0.10 )
+console.log( money_value("$-2.3456"), -2.3456 )
+console.log( money_value("007"), 7.00 )
+console.log( money_value(" $ 89"), 89.0 )
+console.log( money_value("   .11"), 0.11 )
+console.log( money_value("$.2"), 0.20 )
+console.log( money_value("-.34"), -0.34 )
+console.log( money_value("$$$"), 0.0 )
+
     </script>
   </body>
 </html>
