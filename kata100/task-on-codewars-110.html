@@ -138,17 +138,53 @@
          Number(s.replace(/[\s\$]/g, '')) || 0.0
         }
 
-console.log( money_value("12.34"), 12.34 )
-console.log( money_value(" $5.67"), 5.67 )
-console.log( money_value("-0.89"), -0.89 )
-console.log( money_value("-$ 0.1"), -0.10 )
-console.log( money_value("$-2.3456"), -2.3456 )
-console.log( money_value("007"), 7.00 )
-console.log( money_value(" $ 89"), 89.0 )
-console.log( money_value("   .11"), 0.11 )
-console.log( money_value("$.2"), 0.20 )
-console.log( money_value("-.34"), -0.34 )
-console.log( money_value("$$$"), 0.0 )
+      // console.log( money_value("12.34"), 12.34 )
+      // console.log( money_value(" $5.67"), 5.67 )
+      // console.log( money_value("-0.89"), -0.89 )
+      // console.log( money_value("-$ 0.1"), -0.10 )
+      // console.log( money_value("$-2.3456"), -2.3456 )
+      // console.log( money_value("007"), 7.00 )
+      // console.log( money_value(" $ 89"), 89.0 )
+      // console.log( money_value("   .11"), 0.11 )
+      // console.log( money_value("$.2"), 0.20 )
+      // console.log( money_value("-.34"), -0.34 )
+      // console.log( money_value("$$$"), 0.0 )
+
+      // kata 115
+      snail = function(array) {
+        // enjoy
+        let arrLength = array.length
+        if (arrLength === 1) {
+          return array[0]
+        } else if (arrLength === 0 ){
+          return[]
+        }
+        let res = []
+        let newArr = []
+        for (i=0; i< arrLength;i++){
+          if(i===0){
+            res= res.concat(array[i])
+          }
+          else if (i===arrLength-1){
+            res = res.concat(array[i].reverse())
+            for (y=newArr.length-1; y>=0;y--){
+              res= res.concat(newArr[y].shift())
+            }
+          }
+          else {
+            res = res.concat(array[i].pop())
+            newArr.push(array[i])
+          }
+        }
+        return res.concat(snail(newArr))
+      }
+
+
+      console.log(snail([[]]), []);
+      console.log(snail([[1]]), [1]);
+      console.log(snail([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [1, 2, 3, 6, 9, 8, 7, 4, 5]);
+      console.log(snail([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]]), [1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13]);
+      console.log(snail([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]]), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]);
 
     </script>
   </body>
